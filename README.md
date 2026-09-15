@@ -1,2 +1,5 @@
-# mayukh-ap-notes
-Website that should have my AP Notes
+# Mayukh's AP Notes
+The website should have AP Notes I did in High School
+
+# Log
+2026-09-15: Created the repository
