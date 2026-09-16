@@ -1,130 +1,106 @@
-/* Reset & General Setup */
-* {
-  box-sizing: border-box;
+html, body {
   margin: 0;
   padding: 0;
-}
-
-body {
   background-color: #ffffff;
   font-family: 'Times New Roman', Times, serif;
-  color: #000000;
 }
 
-/* 1. Top Red Header Banner */
-.main-banner {
-  background: linear-gradient(to bottom, #d60000 0%, #ffffff 100%);
-  padding: 40px 10px 20px 10px;
+/* Red Glow Header */
+.banner {
+  background: linear-gradient(180deg, #cc0000 0%, #ff3333 50%, #ffffff 100%);
+  padding: 35px 10px 15px 10px;
   text-align: center;
 }
 
-.banner-title {
+.glow-text {
   color: #ffffff;
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   font-weight: bold;
+  margin: 0;
+  text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff;
+}
+
+/* Blue Disclaimer Bar */
+.disclaimer {
+  background-color: #3355ff;
+  color: #ffffff;
   font-family: 'Times New Roman', Times, serif;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 0 0 25px rgba(255, 255, 255, 0.6);
-  letter-spacing: 1px;
-}
-
-/* 2. Blue Disclaimer Strip */
-.disclaimer-bar {
-  background-color: #3b62ff;
-  color: #ffffff;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: bold;
   text-align: center;
-  padding: 8px 15px;
-  line-height: 1.3;
-  width: 100%;
+  padding: 6px 10px;
 }
 
-/* 3. Main Body Container */
-.content-container {
-  max-width: 1100px;
+/* Layout */
+.wrapper {
+  max-width: 950px;
   margin: 0 auto;
-  padding: 30px 20px 60px 20px;
+  padding: 30px 20px;
 }
 
-/* Grade Section Titles */
-.section-title {
+.grade-title {
   text-align: center;
   font-size: 2.8rem;
   font-weight: bold;
-  margin-bottom: 25px;
+  margin: 10px 0 20px 0;
 }
 
-.section-divider {
-  border: none;
-  height: 2px;
-  background-color: #dcdcdc;
-  margin: 40px auto;
-  width: 95%;
+.divider {
+  border: 0;
+  height: 1px;
+  background: #cccccc;
+  margin: 35px 0;
 }
 
-/* 4. Cards Layout & Alignment */
-.cards-grid {
+.grid {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 35px;
-  flex-wrap: wrap;
+  gap: 30px;
 }
 
-/* 5. Course Cards Styling */
-.course-card {
-  width: 220px;
-  height: 220px;
-  border-radius: 24px;
+/* Base Card Styling */
+.card {
+  width: 210px;
+  height: 210px;
+  border-radius: 28px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-decoration: none;
   color: #ffffff;
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  cursor: pointer;
-}
-
-.course-card img {
-  width: 110px;
-  height: 110px;
-  object-fit: contain;
-  margin-bottom: 12px;
-}
-
-.card-title {
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 1.25rem;
   font-weight: bold;
-  line-height: 1.2;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 15px;
+  box-sizing: border-box;
 }
 
-/* Card Specific Colors and Outer Glow Shadows */
-.course-card.us-history {
-  background-color: #005691;
-  box-shadow: 0 0 35px rgba(0, 86, 145, 0.45);
+.card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 10px;
 }
 
-.course-card.calculus-bc {
-  background-color: #4b66ad;
-  box-shadow: 0 0 35px rgba(75, 102, 173, 0.45);
+/* Individual Color and Glow Adjustments */
+.us-history {
+  background-color: #005b94;
+  box-shadow: 0 0 30px 8px rgba(0, 91, 148, 0.35);
 }
 
-.course-card.computer-science {
-  background-color: #1f9a88;
-  box-shadow: 0 0 35px rgba(31, 154, 136, 0.45);
+.calc {
+  background-color: #4c63a7;
+  box-shadow: 0 0 30px 8px rgba(76, 99, 167, 0.35);
 }
 
-.course-card.us-gov {
-  background-color: #551a82;
-  box-shadow: 0 0 35px rgba(85, 26, 130, 0.45);
+.csa {
+  background-color: #1a9e87;
+  box-shadow: 0 0 30px 8px rgba(26, 158, 135, 0.35);
 }
 
-/* Hover Interaction */
-.course-card:hover {
-  transform: translateY(-4px) scale(1.02);
+.gov {
+  background-color: #511878;
+  box-shadow: 0 0 30px 8px rgba(81, 24, 120, 0.35);
 }
