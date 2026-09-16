@@ -122,3 +122,23 @@ html, body {
 .img-button:hover {
   transform: translateY(-3px) scale(1.01);
 }
+
+/* Footer Styling */
+.footer {
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.1rem;
+  color: #333333;
+  padding: 30px 15px 40px 15px;
+  margin-top: 20px;
+}
+
+.footer a {
+  color: #005691;
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+.footer a:hover {
+  color: #cc0000;
+}
