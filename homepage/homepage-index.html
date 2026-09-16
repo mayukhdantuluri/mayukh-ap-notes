@@ -4,51 +4,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mayukh Dantuluri's AP Notes</title>
-
-  <!-- Favicon from Website-Icons folder -->
+  
   <link rel="icon" type="image/png" href="../Website-Icons/favicon.png">
-
-  <!-- Custom Homepage CSS -->
   <link rel="stylesheet" href="homepage-styles.css">
 </head>
 <body>
 
   <header class="banner">
-    <h1>Mayukh Dantuluri's AP Notes</h1>
-    <p class="disclaimer">Warning: AP® and Advanced Placement® are trademarks registered by the College Board...</p>
+    <h1 class="glow-text">Mayukh Dantuluri’s AP Notes</h1>
   </header>
 
-  <main class="container">
+  <div class="disclaimer">
+    Warning: AP® and Advanced Placement® are trademarks registered by the College Board, which is not affiliated with, and does not endorse, this product. All course materials, notes, and study resources are independently created by me.
+  </div>
+
+  <main class="wrapper">
+
     <section>
-      <h2>Grade 09</h2>
-      <div class="grid">
-        <a href="u.s.-history.html" class="card">
-          <img src="../Website-Icons/u.s.history.png">
+      <h2 class="grade-title">Grade 09</h2>
+      <div class="grid single">
+        <a href="../u.s.-history" class="card us-history">
+          <img src="../Website-Icons/u.s.history.png" alt="U.S. History">
           <span>U.S. History</span>
         </a>
       </div>
     </section>
 
+    <hr class="divider">
+
     <section>
-      <h2>Grade 10</h2>
-      <div class="grid">
-        <a href="calculus-bc.html" class="card">
+      <h2 class="grade-title">Grade 10</h2>
+      <div class="grid trio">
+        <a href="../calculus-bc" class="card calc">
           <img src="../Website-Icons/calculus.bc.png" alt="Calculus BC">
           <span>Calculus BC</span>
         </a>
-        <a href="computer-science-a.html" class="card">
+        <a href="../computer-science-a" class="card csa">
           <img src="../Website-Icons/computer.science.a.png" alt="Computer Science A">
           <span>Computer Science A</span>
         </a>
-        <a href="u.s.-government-and-politics.html" class="card">
-          <img src="../Website-Icons/u.s.government.and.politics.png" alt="U.S. Gov">
-          <span>U.S. Government and Politics</span>
+        <a href="../u.s.-government-and-politics" class="card gov">
+          <img src="../Website-Icons/u.s.government.and.politics.png" alt="U.S. Government and Politics">
+          <span>U.S. Government<br>and Politics</span>
         </a>
       </div>
     </section>
+
   </main>
 
-  <!-- Custom Homepage JavaScript -->
   <script src="homepage-script.js"></script>
 </body>
 </html>
