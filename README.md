@@ -8,3 +8,5 @@ Contact mayukh.dantuluri@outlook.com or mayukhdantuluri@gmail.com to join if I k
 
 # Log
 **2026-09-15** Created the repository
+
+**2026-09-16** Added image logos in Website-Icons folder
