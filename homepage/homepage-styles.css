@@ -5,7 +5,7 @@ html, body {
   font-family: 'Times New Roman', Times, serif;
 }
 
-/* Header & Disclaimer */
+/* Header & Disclaimer Bar */
 .banner {
   background: linear-gradient(180deg, #cc0000 0%, #ff3333 50%, #ffffff 100%);
   padding: 35px 10px 15px 10px;
@@ -58,44 +58,46 @@ html, body {
   gap: 30px;
 }
 
-/* Card Container */
-.card {
+/* Image-As-Button Containers */
+.img-button {
+  display: block;
   width: 210px;
   height: 210px;
   border-radius: 28px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: transparent;
+  padding: 0;
+  margin: 0;
   text-decoration: none;
-  overflow: hidden;
-  transition: transform 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
 }
 
-/* Image Expansion to fill card without text collision */
-.card img {
+/* Ensure the uploaded image completely fills the button area */
+.img-button img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  display: block;
   border-radius: 28px;
 }
 
-/* Soft External Card Glows */
+/* Soft External Image Glows matching original card colors */
 .us-history {
-  box-shadow: 0 0 30px 8px rgba(0, 91, 148, 0.4);
+  box-shadow: 0 0 30px 8px rgba(0, 91, 148, 0.45);
 }
 
 .calc {
-  box-shadow: 0 0 30px 8px rgba(76, 99, 167, 0.4);
+  box-shadow: 0 0 30px 8px rgba(76, 99, 167, 0.45);
 }
 
 .csa {
-  box-shadow: 0 0 30px 8px rgba(26, 158, 135, 0.4);
+  box-shadow: 0 0 30px 8px rgba(26, 158, 135, 0.45);
 }
 
 .gov {
-  box-shadow: 0 0 30px 8px rgba(81, 24, 120, 0.4);
+  box-shadow: 0 0 30px 8px rgba(81, 24, 120, 0.45);
 }
 
-.card:hover {
-  transform: translateY(-3px);
+.img-button:hover {
+  transform: translateY(-3px) scale(1.01);
 }
