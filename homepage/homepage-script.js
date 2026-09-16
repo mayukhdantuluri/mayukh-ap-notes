@@ -1,36 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Target all course card elements on the homepage
-  const cards = document.querySelectorAll('.card');
+  // Select all image button elements
+  const buttons = document.querySelectorAll('.img-button');
 
-  cards.forEach(card => {
-    // Add visual click feedback (pressed effect)
-    card.addEventListener('mousedown', () => {
-      card.style.transform = 'scale(0.96)';
+  buttons.forEach(button => {
+    // Click scaling feedback directly on the image button
+    button.addEventListener('mousedown', () => {
+      button.style.transform = 'scale(0.96)';
     });
 
-    card.addEventListener('mouseup', () => {
-      card.style.transform = 'scale(1)';
+    button.addEventListener('mouseup', () => {
+      button.style.transform = 'scale(1)';
     });
 
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'scale(1)';
+    button.addEventListener('mouseleave', () => {
+      button.style.transform = 'scale(1)';
     });
 
-    // Handle click navigation
-    card.addEventListener('click', (event) => {
-      const destination = card.getAttribute('href');
+    // Handle site navigation
+    button.addEventListener('click', (event) => {
+      const targetUrl = button.getAttribute('href');
 
-      // Allow default browser behavior if opening in a new tab (Ctrl/Cmd + Click)
+      // Preserve default browser action for opening in new tab (Cmd/Ctrl + click)
       if (event.ctrlKey || event.metaKey) {
         return;
       }
 
-      if (destination) {
+      if (targetUrl) {
         event.preventDefault();
-        window.location.href = destination;
+        window.location.href = targetUrl;
       }
     });
   });
-
-  console.log('Homepage JavaScript initialized successfully.');
 });
