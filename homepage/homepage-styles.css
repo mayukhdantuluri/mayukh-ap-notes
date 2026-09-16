@@ -3,34 +3,56 @@ html, body {
   padding: 0;
   background-color: #ffffff;
   font-family: 'Times New Roman', Times, serif;
+  overflow-x: hidden;
 }
 
-/* Header & Disclaimer Bar */
+/* 1. Enlarged Red Title Banner */
 .banner {
   background: linear-gradient(180deg, #cc0000 0%, #ff3333 50%, #ffffff 100%);
-  padding: 35px 10px 15px 10px;
+  padding: 60px 10px 35px 10px; /* Increased vertical height */
   text-align: center;
 }
 
 .glow-text {
   color: #ffffff;
-  font-size: 3.2rem;
+  font-size: 4.2rem; /* Enlarged title text */
   font-weight: bold;
   margin: 0;
-  text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff;
+  text-shadow: 0 0 12px #ffffff, 0 0 25px #ffffff, 0 0 35px #ffffff;
 }
 
+/* 2. Blue Disclaimer Bar (Moved down with white space + infinite scrolling text) */
 .disclaimer {
   background-color: #3355ff;
   color: #ffffff;
   font-family: 'Times New Roman', Times, serif;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: bold;
-  text-align: center;
-  padding: 6px 10px;
+  padding: 8px 0;
+  margin-top: 25px; /* Creates white space between banner and blue bar */
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  position: relative;
 }
 
-/* Main Layout */
+.disclaimer-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: slide-text 16s linear infinite; /* Adjust time to change speed */
+}
+
+/* Infinite Slide Animation: Right to Left */
+@keyframes slide-text {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* 3. Main Body Layout */
 .wrapper {
   max-width: 950px;
   margin: 0 auto;
@@ -58,7 +80,7 @@ html, body {
   gap: 30px;
 }
 
-/* Image-As-Button Containers */
+/* Button Containers */
 .img-button {
   display: block;
   width: 210px;
@@ -72,7 +94,6 @@ html, body {
   cursor: pointer;
 }
 
-/* Ensure the uploaded image completely fills the button area */
 .img-button img {
   width: 100%;
   height: 100%;
@@ -81,7 +102,7 @@ html, body {
   border-radius: 28px;
 }
 
-/* Soft External Image Glows matching original card colors */
+/* Soft Image Glows */
 .us-history {
   box-shadow: 0 0 30px 8px rgba(0, 91, 148, 0.45);
 }
