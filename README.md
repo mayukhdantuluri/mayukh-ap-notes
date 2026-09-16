@@ -9,4 +9,5 @@ Contact mayukh.dantuluri@outlook.com or mayukhdantuluri@gmail.com to join (ONLY 
 # Log
 **2026-09-15** Created the repository
 
-**2026-09-16** Added image logos in Website-Icons folder
+**2026-09-16** Added image logos in Website-Icons folder, got the Homepage to start working
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/757f34f5-f01d-4880-9fad-d97073aee943" />
