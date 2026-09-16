@@ -5,7 +5,7 @@ html, body {
   font-family: 'Times New Roman', Times, serif;
 }
 
-/* Red Glow Header */
+/* Header & Disclaimer */
 .banner {
   background: linear-gradient(180deg, #cc0000 0%, #ff3333 50%, #ffffff 100%);
   padding: 35px 10px 15px 10px;
@@ -20,18 +20,17 @@ html, body {
   text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff;
 }
 
-/* Blue Disclaimer Bar */
 .disclaimer {
   background-color: #3355ff;
   color: #ffffff;
   font-family: 'Times New Roman', Times, serif;
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: bold;
   text-align: center;
   padding: 6px 10px;
 }
 
-/* Layout */
+/* Main Layout */
 .wrapper {
   max-width: 950px;
   margin: 0 auto;
@@ -59,48 +58,44 @@ html, body {
   gap: 30px;
 }
 
-/* Base Card Styling */
+/* Card Container */
 .card {
   width: 210px;
   height: 210px;
   border-radius: 28px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 1.2rem;
-  text-align: center;
-  padding: 15px;
-  box-sizing: border-box;
+  overflow: hidden;
+  transition: transform 0.15s ease;
 }
 
+/* Image Expansion to fill card without text collision */
 .card img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  margin-bottom: 10px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 28px;
 }
 
-/* Individual Color and Glow Adjustments */
+/* Soft External Card Glows */
 .us-history {
-  background-color: #005b94;
-  box-shadow: 0 0 30px 8px rgba(0, 91, 148, 0.35);
+  box-shadow: 0 0 30px 8px rgba(0, 91, 148, 0.4);
 }
 
 .calc {
-  background-color: #4c63a7;
-  box-shadow: 0 0 30px 8px rgba(76, 99, 167, 0.35);
+  box-shadow: 0 0 30px 8px rgba(76, 99, 167, 0.4);
 }
 
 .csa {
-  background-color: #1a9e87;
-  box-shadow: 0 0 30px 8px rgba(26, 158, 135, 0.35);
+  box-shadow: 0 0 30px 8px rgba(26, 158, 135, 0.4);
 }
 
 .gov {
-  background-color: #511878;
-  box-shadow: 0 0 30px 8px rgba(81, 24, 120, 0.35);
+  box-shadow: 0 0 30px 8px rgba(81, 24, 120, 0.4);
+}
+
+.card:hover {
+  transform: translateY(-3px);
 }
