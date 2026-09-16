@@ -1,7 +1,8 @@
 # Mayukh's AP Notes
 The website should have AP Notes I did in High School
 
-# Access
+
+
 **Owner:** Mayukh Dantuluri (@mayukhdantuluri)
 
 # Log
