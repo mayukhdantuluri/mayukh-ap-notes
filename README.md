@@ -10,4 +10,7 @@ Contact mayukh.dantuluri@outlook.com or mayukhdantuluri@gmail.com to join (ONLY 
 **2026-09-15** Created the repository
 
 **2026-09-16** Added image logos in Website-Icons folder, got the Homepage to start working
-<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/757f34f5-f01d-4880-9fad-d97073aee943" />
+<img width="1904" height="910" alt="image" src="https://github.com/user-attachments/assets/885af1dd-ae77-4e5d-89be-870568243f83" />
+
+**2026-09-17** Refined the homepage, began working on the contents for U.S. History
+<img width="1136" height="705" alt="image" src="https://github.com/user-attachments/assets/1d0bc4d9-2758-480c-b8b8-6b6d02636ff0" />
