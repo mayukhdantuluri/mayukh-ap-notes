@@ -39,7 +39,7 @@ html, body {
 .disclaimer-text {
   display: inline-block;
   padding-left: 100%;
-  animation: slide-text 16s linear infinite; /* Adjust time to change speed */
+  animation: slide-text 20s linear infinite; /* Adjust time to change speed */
 }
 
 /* Infinite Slide Animation: Right to Left */
