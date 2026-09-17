@@ -31,7 +31,7 @@ html, body {
 
 /* Single Column Vertical Stack */
 .grid-container {
-  max-width: 650px; /* Adjusted width for a clean vertical list layout */
+  max-width: 1000px; /* Adjusted width for a clean vertical list layout */
   margin: 40px auto;
   padding: 0 20px;
   display: grid;
