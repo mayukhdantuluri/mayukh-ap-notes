@@ -120,7 +120,7 @@ html, body {
 
 /* Hover and Click Animation handled strictly via CSS */
 .img-button:hover {
-  transform: translateY(-3px) scale(1.02);
+  transform: translateY(0px) scale(1.04);
 }
 
 .img-button:active {
