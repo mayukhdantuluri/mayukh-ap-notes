@@ -8,20 +8,20 @@ html, body {
 
 /* 1. Enlarged Red Title Banner */
 .banner {
-  background: linear-gradient(180deg, #b00000 0%, #ff3333 70%, #ffffff 100%);
-  padding: 60px 10px 35px 10px; /* Increased vertical height */
+  background: linear-gradient(180deg, #ab0000 0%, #ff3333 70%, #ffffff 100%);
+  padding: 60px 10px 35px 10px;
   text-align: center;
 }
 
 .glow-text {
   color: #ffffff;
-  font-size: 4.5rem; /* Enlarged title text */
+  font-size: 4.5rem;
   font-weight: bold;
   margin: 0;
   text-shadow: 0 0 12px #ffffff, 0 0 25px #ffffff, 0 0 35px #ffffff;
 }
 
-/* 2. Blue Disclaimer Bar (Moved down with white space + infinite scrolling text) */
+/* 2. Blue Disclaimer Bar */
 .disclaimer {
   background-color: #3355ff;
   color: #ffffff;
@@ -29,7 +29,7 @@ html, body {
   font-size: 0.75rem;
   font-weight: bold;
   padding: 8px 0;
-  margin-top: 30px; /* Creates white space between banner and blue bar */
+  margin-top: 25px;
   overflow: hidden;
   white-space: nowrap;
   width: 100%;
@@ -39,10 +39,9 @@ html, body {
 .disclaimer-text {
   display: inline-block;
   padding-left: 100%;
-  animation: slide-text 25s linear infinite; /* Adjust time to change speed */
+  animation: slide-text 25s linear infinite;
 }
 
-/* Infinite Slide Animation: Right to Left */
 @keyframes slide-text {
   0% {
     transform: translateX(0);
@@ -61,7 +60,7 @@ html, body {
 
 .grade-title {
   text-align: center;
-  font-size: 3rem;
+  font-size: 2.8rem;
   font-weight: bold;
   margin: 10px 0 20px 0;
 }
@@ -80,7 +79,7 @@ html, body {
   gap: 30px;
 }
 
-/* Button Containers */
+/* 4. Image-As-Button Containers */
 .img-button {
   display: block;
   width: 210px;
@@ -119,11 +118,16 @@ html, body {
   box-shadow: 0 0 30px 8px rgba(81, 24, 120, 0.45);
 }
 
+/* Hover and Click Animation handled strictly via CSS */
 .img-button:hover {
-  transform: translateY(0px) scale(0.95);
+  transform: translateY(-3px) scale(1.02);
 }
 
-/* Footer Styling */
+.img-button:active {
+  transform: scale(0.96);
+}
+
+/* 5. Footer Styling */
 .footer {
   text-align: center;
   font-family: 'Times New Roman', Times, serif;
