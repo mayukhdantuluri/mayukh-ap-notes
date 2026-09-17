@@ -14,7 +14,7 @@ html, body {
 
 .header-title {
   color: #ffffff;
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: bold;
   margin: 0;
 }
@@ -47,7 +47,7 @@ html, body {
   height: 90px;
   background-color: #005b94;
   color: #ffffff;
-  font-size: 1.35rem;
+  font-size: 1.75rem;
   font-weight: bold;
   text-decoration: none;
   border-radius: 18px;
