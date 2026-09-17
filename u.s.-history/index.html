@@ -5,66 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AP U.S. History Notes</title>
   <link rel="icon" type="image/png" href="../Website-Icons/favicon.png">
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background-color: #ffffff;
-      font-family: 'Times New Roman', Times, serif;
-    }
-
-    /* Top Blue Header */
-    .header-banner {
-      background-color: #005b94;
-      padding: 25px 10px;
-      text-align: center;
-    }
-
-    .header-title {
-      color: #ffffff;
-      font-size: 3rem;
-      font-weight: bold;
-      margin: 0;
-    }
-
-    /* Back Button Link */
-    .back-link {
-      display: inline-block;
-      margin: 20px 0 0 40px;
-      color: #005b94;
-      text-decoration: underline;
-      font-weight: bold;
-      font-size: 1.1rem;
-    }
-
-    /* 3x3 Grid Layout */
-    .grid-container {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 35px 20px;
-      text-align: center;
-    }
-
-    .unit-item {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #000000;
-      text-decoration: none;
-      transition: color 0.15s ease, transform 0.15s ease;
-    }
-
-    .unit-item:hover {
-      color: #005b94;
-      transform: translateY(-2px);
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Top Blue Header -->
+  <!-- Top Header Bar -->
   <header class="header-banner">
     <h1 class="header-title">U.S. History</h1>
   </header>
@@ -72,20 +17,21 @@
   <!-- Back Navigation to Homepage -->
   <a href="../homepage/homepage-index.html" class="back-link">← Back to Home</a>
 
-  <!-- 3x3 Unit Links -->
+  <!-- 3x3 Button Grid -->
   <main class="grid-container">
-    <a href="#unit1" class="unit-item">Unit 1 (1491-1607)</a>
-    <a href="#unit2" class="unit-item">Unit 2 (1607-1754)</a>
-    <a href="#unit3" class="unit-item">Unit 3 (1754-1800)</a>
+    <a href="./unit-1/" class="unit-button">Unit 1 (1491-1607)</a>
+    <a href="./unit-2/" class="unit-button">Unit 2 (1607-1754)</a>
+    <a href="./unit-3/" class="unit-button">Unit 3 (1754-1800)</a>
 
-    <a href="#unit4" class="unit-item">Unit 4 (1800-1846)</a>
-    <a href="#unit5" class="unit-item">Unit 5 (1846-1870)</a>
-    <a href="#unit6" class="unit-item">Unit 6 (1870-1894)</a>
+    <a href="./unit-4/" class="unit-button">Unit 4 (1800-1846)</a>
+    <a href="./unit-5/" class="unit-button">Unit 5 (1846-1870)</a>
+    <a href="./unit-6/" class="unit-button">Unit 6 (1870-1894)</a>
 
-    <a href="#unit7" class="unit-item">Unit 7 (1894-1945)</a>
-    <a href="#unit8" class="unit-item">Unit 8 (1945-1980)</a>
-    <a href="#unit9" class="unit-item">Unit 9 (1980-2021)</a>
+    <a href="./unit-7/" class="unit-button">Unit 7 (1894-1945)</a>
+    <a href="./unit-8/" class="unit-button">Unit 8 (1945-1980)</a>
+    <a href="./unit-9/" class="unit-button">Unit 9 (1980-2021)</a>
   </main>
 
+  <script src="script.js"></script>
 </body>
 </html>
