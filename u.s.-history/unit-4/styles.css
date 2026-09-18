@@ -38,33 +38,35 @@ html, body {
   font-weight: normal;
 }
 
-/* Navigation Links (Both Left and Right Arrows) */
-.nav-unit-link {
+/* Header Navigation Links */
+.nav-unit-link,
+.nav-unit-link:visited,
+header a,
+header a:visited {
+  color: #ffffff !important;
+  text-decoration: none !important;
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #ffffff;
-  text-decoration: none;
   font-size: 1.5rem;
   font-weight: bold;
-  transition: transform 0.2s ease, opacity 0.2s ease;
   position: absolute;
 }
 
-.prev-unit {
+.prev-unit-link {
   left: 0;
 }
 
-.next-unit {
-  right: 0;
-}
-
-.prev-unit:hover {
+.prev-unit-link:hover {
   transform: translateX(-4px);
   opacity: 0.9;
 }
 
-.next-unit:hover {
+.next-unit-link {
+  right: 0;
+}
+
+.next-unit-link:hover {
   transform: translateX(4px);
   opacity: 0.9;
 }
@@ -81,13 +83,18 @@ html, body {
   padding: 30px 20px;
 }
 
-.back-link {
+.back-link,
+.back-link:link {
   display: inline-block;
   margin-bottom: 35px;
   color: #005b94;
   text-decoration: underline;
   font-weight: bold;
   font-size: 1.1rem;
+}
+
+.back-link:visited {
+  color: #551a8b;
 }
 
 /* Topic Rows */
@@ -108,12 +115,25 @@ html, body {
   font-size: 1.6rem;
   font-weight: bold;
   min-width: 140px;
-  color: #000000;
 }
 
 .topic-title {
   font-size: 1.5rem;
-  color: #000000;
+}
+
+/* Standard Link Colors (Blue Unclicked, Purple Visited) */
+.topic-number a:link,
+.topic-title a:link,
+.summary-title a:link {
+  color: #0000ee;
+  text-decoration: underline;
+}
+
+.topic-number a:visited,
+.topic-title a:visited,
+.summary-title a:visited {
+  color: #551a8b;
+  text-decoration: underline;
 }
 
 /* Unit Summary Header */
@@ -125,6 +145,5 @@ html, body {
 .summary-title {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #000000;
   margin-bottom: 20px;
 }
