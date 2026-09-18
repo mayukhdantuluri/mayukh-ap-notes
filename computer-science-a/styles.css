@@ -1,0 +1,70 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Header Banner */
+.header-banner {
+  background-color: #289d91;
+  padding: 25px 10px;
+  text-align: center;
+}
+
+.header-title {
+  color: #ffffff;
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Back Link */
+.back-link {
+  display: inline-block;
+  margin: 25px 0 0 40px;
+  color: #005b94;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Single Column Vertical Stack */
+.grid-container {
+  max-width: 1000px; /* Adjusted width for a clean vertical list layout */
+  margin: 40px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr; /* 1 column so each button takes up its own row */
+  gap: 18px; /* Vertical space between rows */
+}
+
+/* Rounded Corner Rectangular Buttons */
+.unit-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65px;
+  background-color: #289d91;
+  color: #ffffff;
+  font-size: 1.7rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 14px;
+  text-align: center;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  box-shadow: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+/* Glowing Effect strictly on Hover */
+.unit-button:hover {
+  background-color: #289d91;
+  transform: translateY(0px);
+  box-shadow: 0 0 25px 6px rgba(0, 91, 148, 0.55);
+}
+
+.unit-button:active {
+  transform: scale(0.98);
+}
