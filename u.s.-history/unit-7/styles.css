@@ -38,22 +38,41 @@ html, body {
   font-weight: normal;
 }
 
-/* Navigation to Next Unit */
-.next-unit-link {
+/* Header Navigation Links */
+header a,
+header a:link,
+header a:visited,
+.nav-unit-link,
+.nav-unit-link:link,
+.nav-unit-link:visited {
+  color: #ffffff !important;
+  text-decoration: none !important;
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #ffffff;
-  text-decoration: none;
   font-size: 1.5rem;
   font-weight: bold;
-  transition: transform 0.2s ease, opacity 0.2s ease;
   position: absolute;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.prev-unit-link {
+  left: 0;
+}
+
+/* Hover Shift Left for Previous Unit */
+.prev-unit-link:hover {
+  transform: translateX(-6px);
+  opacity: 0.9;
+}
+
+.next-unit-link {
   right: 0;
 }
 
+/* Hover Shift Right for Next Unit */
 .next-unit-link:hover {
-  transform: translateX(4px);
+  transform: translateX(6px);
   opacity: 0.9;
 }
 
@@ -69,13 +88,18 @@ html, body {
   padding: 30px 20px;
 }
 
-.back-link {
+.back-link,
+.back-link:link {
   display: inline-block;
   margin-bottom: 35px;
   color: #005b94;
   text-decoration: underline;
   font-weight: bold;
   font-size: 1.1rem;
+}
+
+.back-link:visited {
+  color: #551a8b;
 }
 
 /* Topic Rows */
@@ -96,12 +120,25 @@ html, body {
   font-size: 1.6rem;
   font-weight: bold;
   min-width: 140px;
-  color: #000000;
 }
 
 .topic-title {
   font-size: 1.5rem;
-  color: #000000;
+}
+
+/* Standard Body Links (Blue Unclicked, Purple Visited) */
+.topic-number a:link,
+.topic-title a:link,
+.summary-title a:link {
+  color: #0000ee;
+  text-decoration: underline;
+}
+
+.topic-number a:visited,
+.topic-title a:visited,
+.summary-title a:visited {
+  color: #551a8b;
+  text-decoration: underline;
 }
 
 /* Unit Summary Header */
@@ -113,6 +150,5 @@ html, body {
 .summary-title {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #000000;
   margin-bottom: 20px;
 }
