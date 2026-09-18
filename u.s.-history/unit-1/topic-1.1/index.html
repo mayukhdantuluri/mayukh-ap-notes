@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Topic 1.1: Contextualizing Period 1</title>
-  <link rel="icon" type="image/png" href="../../../Website-Icons/favicon.png">
+  <title>Topic 1.1 - Contextualizing Period 1</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Top Blue Banner Bar -->
+  <!-- Top Navigation Banner -->
   <header class="header-banner">
     <div class="header-content">
       <div class="title-group">
@@ -24,25 +23,34 @@
     </div>
   </header>
 
-  <!-- Main Content Area -->
+  <!-- Main Content Layout -->
   <main class="wrapper">
     <a href="../" class="back-link">&larr; Back to Unit 1</a>
 
     <h1 class="page-title">Contextualizing Period 1</h1>
 
-    <!-- Learning Objective Box -->
-    <div class="learning-objective">
-      <strong>Learning Objective:</strong> Explain the context for European encounters in the Americas from 1491 to 1607.
-    </div>
-
     <!-- Article Content -->
     <article class="reading-content">
       <p>
-        <span class="dropcap">T</span>oday, the United States is a synthesis, or combination, of people from around the world. The first people arrived in the Americas at least 10,000 years ago across the Bering Land Bridge. A survey of how these indigenous people lived before the arrival of Christopher Columbus in the Americas in 1492 provides the context for understanding the interaction of the Europeans and Native Americans and the impact this had on both groups. Columbus's first voyage was a turning point in world history because it initiated lasting contact between people on opposite sides of the Atlantic Ocean. His voyages, followed by European exploration andTo build the webpage for Topic 1.1 incorporating your content, images (`1.1.siberianbridge.jpg`, `1.1.columbian exchange.jpg`, and `1.1.1607boundaries.jpg`), and styling, use the code files below inside your `topic-1.1` directory.
+        Today, the United States is a synthesis, or combination, of people from around the world. The first people arrived in the Americas at least 10,000 years ago across the Bering Land Bridge. A survey of how these indigenous people lived before the arrival of Christopher Columbus in the Americas in 1492 provides the context for understanding the interaction of the Europeans and Native Americans and the impact this had on both groups.
+      </p>
 
----
+      <figure class="content-image">
+        <img src="1.1.siberianbridge.jpg" alt="Map illustrating early human migration via the Siberian land bridge">
+        <figcaption>Early human migration routes across the land bridge into the Americas.</figcaption>
+      </figure>
 
-### `index.html`
+      <p>
+        Columbus's first voyage was a turning point in world history because it initiated lasting contact between people on opposite sides of the Atlantic Ocean. His voyages, followed by European exploration and settlement in the Americas, had profound results on how people on every continent lived. Another landmark change came in 1607 with the founding of the first permanent English settlement at Jamestown, Virginia. The Jamestown settlement marked the beginning of the framework of a new nation.
+      </p>
+
+      <h2>Cultural Diversity in the Americas</h2>
+      <p>
+        When Columbus reached the Americas, the existing cultures varied greatly, partially because of differences in geography and climate. Each culture developed distinctive traits in response to its environment, from tropical islands where sugar grew to forests rich in animal life to land with fertile soil for growing corn (maize). Native Americans also transformed their environments. For example, people in dry regions created irrigation systems, while those inThe code rendered with accidental markdown text because part of the instruction text got pasted directly into the HTML file alongside the code. 
+
+Here is the cleaned-up, original HTML without the extra markdown artifacts and without the learning objective box.
+
+### Updated `index.html`
 
 ```html
 <!DOCTYPE html>
@@ -76,11 +84,6 @@
 
     <h1 class="page-title">Contextualizing Period 1</h1>
 
-    <!-- Learning Objective Box -->
-    <div class="learning-objective">
-      <strong>Learning Objective:</strong> Explain the context for European encounters in the Americas from 1491 to 1607.
-    </div>
-
     <!-- Article Content -->
     <article class="reading-content">
       <p>
@@ -109,4 +112,25 @@
 
       <h2>Colonial Rivalries and Territorial Claims</h2>
       <p>
-        By 1607, European powers including Spain, France, and England
+        By 1607, European powers including Spain, France, and England competed for territory, resources, and influence across the North American continent, shaping the geopolitical landscape of the early modern era.
+      </p>
+
+      <figure class="content-image">
+        <img src="1.1.1607boundaries.jpg" alt="Map showing territorial influences of European powers in North America around 1607">
+        <figcaption>European territorial claims in North America leading up to 1607.</figcaption>
+      </figure>
+
+      <section class="analysis-section">
+        <h3>Analyze the Context</h3>
+        <ol>
+          <li>Describe the historical context behind the development of diverse Native American cultures prior to 1492.</li>
+          <li>Explain the historical factors driving European exploration in the Americas during the 15th and 16th centuries.</li>
+          <li>Explain how transatlantic exchanges impacted both European and Indigenous societies between 1491 and 1607.</li>
+        </ol>
+      </section>
+    </article>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
