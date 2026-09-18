@@ -14,3 +14,5 @@ Contact mayukh.dantuluri@outlook.com or mayukhdantuluri@gmail.com to join (ONLY 
 
 **2026-09-17** Refined the homepage, began working on the contents for U.S. History
 <img width="1136" height="705" alt="image" src="https://github.com/user-attachments/assets/1d0bc4d9-2758-480c-b8b8-6b6d02636ff0" />
+
+**2026-09-18** Worked on the tables of contents for U.S. Government and Politics, Calculus BC, and Computer Science A
