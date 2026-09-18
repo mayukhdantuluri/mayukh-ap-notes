@@ -38,19 +38,13 @@ html, body {
   font-weight: normal;
 }
 
-/* Navigation to Next Unit */
-/* Remove or narrow down the global 'a' color rule */
-a {
-  color: inherit;
-}
-
 /* Header Navigation Links */
 .nav-unit-link,
 .nav-unit-link:visited,
 header a,
 header a:visited {
-  color: #ffffff !important; /* Ensures link stays pure white */
-  text-decoration: none !important; /* Removes the blue underline */
+  color: #ffffff !important; /* Ensures header link stays pure white */
+  text-decoration: none !important; /* Removes the underline in header */
   display: flex;
   align-items: center;
   gap: 12px;
@@ -63,13 +57,13 @@ header a:visited {
   left: 0;
 }
 
-.next-unit-link {
-  right: 0;
+.prev-unit-link:hover {
+  transform: translateX(-4px);
+  opacity: 0.9;
 }
 
-.arrow {
-  font-size: 2.2rem;
-  line-height: 1;
+.next-unit-link {
+  right: 0;
 }
 
 .next-unit-link:hover {
@@ -89,13 +83,18 @@ header a:visited {
   padding: 30px 20px;
 }
 
-.back-link {
+.back-link,
+.back-link:link {
   display: inline-block;
   margin-bottom: 35px;
   color: #005b94;
   text-decoration: underline;
   font-weight: bold;
   font-size: 1.1rem;
+}
+
+.back-link:visited {
+  color: #551a8b;
 }
 
 /* Topic Rows */
@@ -116,12 +115,25 @@ header a:visited {
   font-size: 1.6rem;
   font-weight: bold;
   min-width: 140px;
-  color: #000000;
 }
 
 .topic-title {
   font-size: 1.5rem;
-  color: #000000;
+}
+
+/* Standard Link Colors (Blue Unclicked, Purple Visited) */
+.topic-number a:link,
+.topic-title a:link,
+.summary-title a:link {
+  color: #0000ee;
+  text-decoration: underline;
+}
+
+.topic-number a:visited,
+.topic-title a:visited,
+.summary-title a:visited {
+  color: #551a8b;
+  text-decoration: underline;
 }
 
 /* Unit Summary Header */
@@ -133,6 +145,5 @@ header a:visited {
 .summary-title {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #000000;
   margin-bottom: 20px;
 }
