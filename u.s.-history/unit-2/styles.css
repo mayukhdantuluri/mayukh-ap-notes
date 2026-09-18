@@ -39,17 +39,37 @@ html, body {
 }
 
 /* Navigation to Next Unit */
-.next-unit-link {
+/* Remove or narrow down the global 'a' color rule */
+a {
+  color: inherit;
+}
+
+/* Header Navigation Links */
+.nav-unit-link,
+.nav-unit-link:visited,
+header a,
+header a:visited {
+  color: #ffffff !important; /* Ensures link stays pure white */
+  text-decoration: none !important; /* Removes the blue underline */
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #ffffff;
-  text-decoration: none;
   font-size: 1.5rem;
   font-weight: bold;
-  transition: transform 0.2s ease, opacity 0.2s ease;
   position: absolute;
+}
+
+.prev-unit-link {
+  left: 0;
+}
+
+.next-unit-link {
   right: 0;
+}
+
+.arrow {
+  font-size: 2.2rem;
+  line-height: 1;
 }
 
 .next-unit-link:hover {
