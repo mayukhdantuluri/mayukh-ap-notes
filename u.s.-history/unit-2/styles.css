@@ -1,15 +1,8 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  background-color: #ffffff;
-  font-family: 'Times New Roman', Times, serif;
-}
-
-/* Header Banner */
+/* Header Container Alignment */
 .header-banner {
   background-color: #005b94;
   color: #ffffff;
-  padding: 25px 40px;
+  padding: 25px 30px;
 }
 
 .header-content {
@@ -21,110 +14,46 @@ html, body {
   position: relative;
 }
 
+/* Center Title Group */
 .title-group {
   text-align: center;
-  flex-grow: 1;
+  margin: 0 auto;
 }
 
 .main-title {
-  font-size: 3.6rem;
-  font-weight: bold;
-  margin: 0;
+  font-size: 2.5rem;
+  color: #ffffff;
 }
 
 .subtitle {
-  font-size: 1.8rem;
-  margin: 5px 0 0 0;
-  font-weight: normal;
+  font-size: 1.2rem;
+  color: #ffffff;
 }
 
-/* Navigation Links (Both Left and Right Arrows) */
-.nav-unit-link {
+/* Header Navigation Links (Left & Right) */
+.header-nav-link,
+.header-nav-link:visited {
+  color: #ffffff !important; /* Forces link and arrow text to stay white */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
   display: flex;
   align-items: center;
-  gap: 12px;
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 1.5rem;
-  font-weight: bold;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-  position: absolute;
+  gap: 6px;
+  white-space: nowrap;
 }
 
-.prev-unit {
+.header-nav-link:hover {
+  text-decoration: underline;
+}
+
+/* Position Left & Right Links */
+.prev-unit-link {
+  position: absolute;
   left: 0;
 }
 
-.next-unit {
+.next-unit-link {
+  position: absolute;
   right: 0;
-}
-
-.prev-unit:hover {
-  transform: translateX(-4px);
-  opacity: 0.9;
-}
-
-.next-unit:hover {
-  transform: translateX(4px);
-  opacity: 0.9;
-}
-
-.arrow {
-  font-size: 2.2rem;
-  line-height: 1;
-}
-
-/* Layout Wrapper */
-.wrapper {
-  max-width: 950px;
-  margin: 0 auto;
-  padding: 30px 20px;
-}
-
-.back-link {
-  display: inline-block;
-  margin-bottom: 35px;
-  color: #005b94;
-  text-decoration: underline;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-/* Topic Rows */
-.topics-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 60px;
-}
-
-.topic-row {
-  display: flex;
-  align-items: baseline;
-  gap: 35px;
-}
-
-.topic-number {
-  font-size: 1.6rem;
-  font-weight: bold;
-  min-width: 140px;
-  color: #000000;
-}
-
-.topic-title {
-  font-size: 1.5rem;
-  color: #000000;
-}
-
-/* Unit Summary Header */
-.summary-section {
-  text-align: center;
-  margin-top: 40px;
-}
-
-.summary-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #000000;
-  margin-bottom: 20px;
 }
