@@ -38,17 +38,9 @@ html, body {
 
 .disclaimer-text {
   display: inline-block;
-  padding-left: 100%;
-  animation: slide-text 25s linear infinite;
-}
-
-@keyframes slide-text {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+  position: relative;
+  white-space: nowrap;
+  will-change: transform;
 }
 
 /* 3. Main Body Layout */
