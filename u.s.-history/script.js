@@ -15,4 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // Creating floating chat button for chatbot
+  const chatBtn = document.createElement('button');
+  chatBtn.id = 'chat-toggle-btn'
+  chatBtn.className = 'chat-toggle-btn';
+  chatBtn.innerHTML = '💬Chat';
+
+  //Adding the button
+  document.body.appendChild(chatBtn)
 });
