@@ -16,7 +16,7 @@ html, body {
 .glow-text {
   color: #ffffff;
   font-size: 4.5rem;
-  font-weight: normal;
+  font-weight: bold;
   margin: 0;
   text-shadow: 0 0 12px #ffffff, 0 0 25px #ffffff, 0 0 35px #ffffff;
 }
@@ -27,7 +27,7 @@ html, body {
   color: #ffffff;
   font-family: 'Times New Roman', Times, serif;
   font-size: 0.85rem;
-  font-weight: bold;
+  font-weight: normal;
   margin-top: 25px;
   overflow: hidden;
   white-space: nowrap;
