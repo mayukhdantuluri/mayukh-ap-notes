@@ -34,7 +34,7 @@ html, body {
   white-space: nowrap;
   width: 100%;
   position: relative;
-  height: 40px; /* Fixed height to accommodate absolute text elements */
+  height: 18px; /* Fixed height to accommodate absolute text elements */
 }
 
 .disclaimer-text {
