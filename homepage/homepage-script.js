@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. Overlapping Rotating Ticker Logic
   const messages = [
     "AP® and Advanced Placement® are trademarks registered by the College Board, which is not affiliated with, and does not endorse, this website. All course materials, notes, and study resources are independently created by me.",
-    "Welcome to Mayukh's AP Notes! Check out the AP U.S. History, Calculus BC, CSA, and Gov pages below.",
+    "AP Season in 2027 will go from May 3 to May 14, with the late session being May 17 to May 21.",
     "This website is still in the creation phase. I haven't finished setting up the table of contents for each course, let alone the actual notes that this website is supposed to have."
   ];
 
