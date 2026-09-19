@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. Rotating Ticker Logic
   const messages = [
     "AP® and Advanced Placement® are trademarks registered by the College Board, which is not affiliated with, and does not endorse, this website. All course materials, notes, and study resources are independently created by me.",
-    "This website is still in the process of early creation. I haven't finished with setting up the table of contents, let alone the actual notes.",
-    "AP Season in 2027 goes from May 3 to May 14, with the late testing being from May 17 to May 21."
+    "This website is still in the creation phase. I haven't finished setting up the table of contents for each course, let alone the actual notes that this website is supposed to have.",
+    "AP Season this school year goes from 2027-05-03 to 2027-05-14, with the late testing week being 2027-05-17 to 2027-05-21."
   ];
 
   const disclaimerContainer = document.querySelector('.disclaimer');
@@ -25,36 +25,40 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!disclaimerContainer || !textElement) return;
 
   const SPEED_PX_PER_SEC = 120; // Text scroll speed in pixels per second
-  const PAUSE_BETWEEN_MS = 2500; // Pause duration (in ms) after a message exits left
+  const GAP_DELAY_MS = 3000;    // Wait time after tail end enters right edge before spawning next message
 
   let currentMsgIndex = 0;
 
-  function playNextMessage() {
+  function playMessage() {
     textElement.textContent = messages[currentMsgIndex];
 
-    // Reset transition & position text completely past the right edge
+    // Reset transition & place element completely off-screen to the right
     textElement.style.transition = 'none';
     const containerWidth = disclaimerContainer.offsetWidth;
     const textWidth = textElement.offsetWidth;
 
     textElement.style.transform = `translateX(${containerWidth}px)`;
 
-    // Force browser repaint before triggering animation
+    // Force browser reflow
     textElement.offsetHeight;
 
-    // Calculate duration so short and long messages scroll at the exact same speed
+    // Total distance needed to cross off the left screen entirely
     const totalDistance = containerWidth + textWidth;
-    const durationSec = totalDistance / SPEED_PX_PER_SEC;
+    const totalDurationSec = totalDistance / SPEED_PX_PER_SEC;
 
-    textElement.style.transition = `transform ${durationSec}s linear`;
+    // Time taken for the tail end of text to clear the right edge (Distance = containerWidth)
+    const entryTimeMs = (containerWidth / SPEED_PX_PER_SEC) * 1000;
+
+    // Trigger full scroll animation across the screen
+    textElement.style.transition = `transform ${totalDurationSec}s linear`;
     textElement.style.transform = `translateX(-${textWidth}px)`;
 
-    // Wait until text clears the left screen, pause, then start next message
+    // Schedule the next message to trigger after text tail enters right edge + GAP_DELAY_MS
     setTimeout(() => {
       currentMsgIndex = (currentMsgIndex + 1) % messages.length;
-      setTimeout(playNextMessage, PAUSE_BETWEEN_MS);
-    }, durationSec * 1000);
+      playMessage();
+    }, entryTimeMs + GAP_DELAY_MS);
   }
 
-  playNextMessage();
+  playMessage();
 });
