@@ -60,7 +60,7 @@ html, body {
 
 /* Glowing Effect strictly on Hover */
 .unit-button:hover {
-  background-color: #546ea5;
+  background-color: #98a8c9;
   transform: translateY(0px);
   box-shadow: 0 0 25px 6px rgba(0, 91, 148, 0.55);
 }
