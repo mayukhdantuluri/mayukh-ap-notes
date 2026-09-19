@@ -99,6 +99,7 @@ header a:visited,
 
 .topic-title {
   font-size: 1.5rem;
+  text-decoration: italic;
 }
 
 /* Standard Body Links (Blue Unclicked, Purple Visited) */
