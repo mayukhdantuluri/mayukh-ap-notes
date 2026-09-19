@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!disclaimerBar) return;
 
   const SPEED_PX_PER_SEC = 120; // Scrolling speed (pixels per second)
-  const GAP_DELAY_MS = 2000;    // Time delay after the tail of Message 1 enters before Message 2 starts sliding in
+  const GAP_DELAY_MS = 1000;    // Time delay after the tail of Message 1 enters before Message 2 starts sliding in
 
   let currentMsgIndex = 0;
 
