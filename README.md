@@ -1,7 +1,7 @@
 # Mayukh Dantuluri's AP Notes
 The website should have AP Notes I did in High School
 
-# Contributors
+# Team Members
 **Owner:** Mayukh Dantuluri (@mayukhdantuluri)
 
 **Chatbot Developer:** Rian Ganesh (@rianganesh64-sketch)
