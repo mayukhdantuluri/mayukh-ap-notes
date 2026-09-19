@@ -15,20 +15,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. Overlapping Rotating Ticker Logic
   const messages = [
     "AP® and Advanced Placement® are trademarks registered by the College Board, which is not affiliated with, and does not endorse, this website. All course materials, notes, and study resources are independently created by me.",
-    "This website is still in the creation phase. I haven't finished setting up the table of contents for each course, let alone the actual notes that this website is supposed to have.",
-    "AP Season this school year goes from 2027-05-03 to 2027-05-14, with the late testing week being 2027-05-17 to 2027-05-21."
+    "Welcome to Mayukh's AP Notes! Check out the AP U.S. History, Calculus BC, CSA, and Gov pages below.",
+    "This website is still in the creation phase. I haven't finished setting up the table of contents for each course, let alone the actual notes that this website is supposed to have."
   ];
 
   const disclaimerBar = document.getElementById('disclaimer-bar');
   if (!disclaimerBar) return;
 
-  const SPEED_PX_PER_SEC = 120; // Scrolling speed (pixels per second)
-  const GAP_DELAY_MS = 1000;    // Time delay after the tail of Message 1 enters before Message 2 starts sliding in
+  const SPEED_PX_PER_SEC = 120; // Scrolling speed
+  const GAP_DELAY_MS = 2500;    // Wait time after Message 1 tail enters right edge before Message 2 enters
 
   let currentMsgIndex = 0;
 
   function spawnMessage() {
-    // Create an independent text node for the current message
     const msgSpan = document.createElement('span');
     msgSpan.className = 'disclaimer-text';
     msgSpan.textContent = messages[currentMsgIndex];
@@ -37,34 +36,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const containerWidth = disclaimerBar.offsetWidth;
     const textWidth = msgSpan.offsetWidth;
 
-    // Start position: Off-screen to the right
-    msgSpan.style.transition = 'none';
-    msgSpan.style.transform = `translateX(${containerWidth}px)`;
+    // Time required for the text to move its own length into the view
+    const textEntryTimeMs = (textWidth / SPEED_PX_PER_SEC) * 1000;
 
-    // Force browser reflow to apply starting transform
-    msgSpan.offsetHeight;
-
-    // Calculations
+    // Total time required for text to scroll completely across the container
     const totalDistance = containerWidth + textWidth;
     const totalDurationSec = totalDistance / SPEED_PX_PER_SEC;
-    
-    // Time taken for the tail end of the message to clear the right edge
-    const tailEntryTimeMs = (containerWidth / SPEED_PX_PER_SEC) * 1000;
 
-    // Animate text all the way across to the left
-    msgSpan.style.transition = `transform ${totalDurationSec}s linear`;
-    msgSpan.style.transform = `translateX(-${textWidth}px)`;
+    // Apply animation via CSS Web Animations API
+    const animation = msgSpan.animate(
+      [
+        { transform: `translateX(${containerWidth}px)` },
+        { transform: `translateX(-${textWidth}px)` }
+      ],
+      {
+        duration: totalDurationSec * 1000,
+        easing: 'linear',
+        fill: 'forwards'
+      }
+    );
 
-    // Clean up DOM element after it completely exits left edge
-    setTimeout(() => {
+    // Remove element after it completely exits the left side
+    animation.onfinish = () => {
       msgSpan.remove();
-    }, totalDurationSec * 1000);
+    };
 
-    // Trigger next message after the tail end enters + set delay
+    // Schedule the next message to start AFTER the tail end of Message 1 enters the right edge + GAP_DELAY_MS
     setTimeout(() => {
       currentMsgIndex = (currentMsgIndex + 1) % messages.length;
       spawnMessage();
-    }, tailEntryTimeMs + GAP_DELAY_MS);
+    }, textEntryTimeMs + GAP_DELAY_MS);
   }
 
   spawnMessage();
