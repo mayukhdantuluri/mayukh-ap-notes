@@ -21,7 +21,7 @@ html, body {
   text-shadow: 0 0 12px #ffffff, 0 0 25px #ffffff, 0 0 35px #ffffff;
 }
 
-/* 2. Blue Disclaimer Bar */
+/* Blue Disclaimer Bar */
 .disclaimer {
   background-color: #3355ff;
   color: #ffffff;
@@ -34,11 +34,13 @@ html, body {
   white-space: nowrap;
   width: 100%;
   position: relative;
+  height: 18px; /* Fixed height to accommodate absolute text elements */
 }
 
 .disclaimer-text {
-  display: inline-block;
-  position: relative;
+  position: absolute;
+  top: 8px;
+  left: 0;
   white-space: nowrap;
   will-change: transform;
 }
