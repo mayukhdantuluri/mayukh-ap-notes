@@ -96,3 +96,106 @@ html, body {
   transform: scale(1.1);
 
 }
+
+/* Chat window styling*/
+.chat-window {
+  position: fixed;
+  bottom: 150px;
+  right: 60px;
+  width: 320px;
+  height: 500px;
+  background-color: #e6e3dd; /*Just a testing color, will be changed*/
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2s);
+  display: flex;
+  flex-direction: column;
+  z-index: 1001;
+  overflow: hidden;
+  font-family: inherit;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/*Toggling between hidden and not-hidden state*/
+.chat-window.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none; /*Disablying clicks which hidden*/
+}
+
+/* Header Bar for chat*/
+.chat-header {
+  background-color: #546ea5;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+#chat-close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* Chat Body Content */
+.chat-body {
+    padding: 20px;
+    flex-grow: 1;
+    background-color: #f4f6f8;
+}
+
+.chat-greeting {
+    margin: 0;
+    color: #334155;
+    font-size: 14px;
+    background: #e2e8f0;
+    padding: 10px 14px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.chat-footer {
+  display: flex;
+  padding: 12px;
+  background-color: #546ea5;
+  border-top: 1px solid #98a8c9;
+  gap: 30px;
+}
+
+.chat-footer input {
+  flex-grow: 1;
+  padding: 8px 12px;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+#chat-send-btn {
+  background-color: #98a8c9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: normal;
+  padding: 8px 14px;
+}
+
+#chat-send-btn:hover {
+  background-color: #a8b9db; /*Color for testing, will be changed*/
+  transform: translateY(0px);
+  box-shadow: 0 0 25px 6px rgba(0, 91, 148, 0.55);
+  transform: scale(1.1);
+}
