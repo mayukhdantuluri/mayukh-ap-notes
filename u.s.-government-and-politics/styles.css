@@ -74,7 +74,7 @@ html, body {
   position: fixed;
   bottom: 75px;
   right: 75px;
-  background-color: #551d74;
+  background-color: #551d75;
   color: white;
   border: none;
   border-radius: 30px;
@@ -90,7 +90,7 @@ html, body {
 
 /* Same glowing effect as unit-button */
 .chat-toggle-btn:hover {
-  background-color: #551d95;
+  background-color: #9031c6;
   transform: translateY(0px);
   box-shadow: 0 0 25px 6px rgba(0, 91, 148, 0.55);
   transform: scale(1.1);
