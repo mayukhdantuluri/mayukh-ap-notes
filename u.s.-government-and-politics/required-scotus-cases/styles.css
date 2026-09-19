@@ -1,3 +1,82 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Header Banner */
+.header-banner {
+  background-color: #551d75;
+  color: #ffffff;
+  padding: 25px 40px;
+}
+
+.header-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.title-group {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.main-title {
+  font-size: 3.6rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1.8rem;
+  margin: 5px 0 0 0;
+  font-weight: normal;
+}
+
+/* Header Navigation Links */
+header a,
+header a:link,
+header a:visited,
+.nav-unit-link,
+.nav-unit-link:link,
+.nav-unit-link:visited {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  position: absolute;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Layout Wrapper */
+.wrapper {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.back-link,
+.back-link:link {
+  display: inline-block;
+  margin-bottom: 35px;
+  color: #005b94;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.back-link:visited {
+  color: #551a8b;
+}
+
 /* Topic Rows */
 .topics-list {
   display: flex;
@@ -20,14 +99,7 @@
 
 .topic-title {
   font-size: 1.5rem;
-}
-
-/* Force italics specifically on the case links */
-.topic-title,
-.topic-title a,
-.topic-title a:link,
-.topic-title a:visited {
-  font-style: italic !important;
+  font-style: italic; /* Italicizes the case names */
 }
 
 /* Standard Body Links (Blue Unclicked, Purple Visited) */
