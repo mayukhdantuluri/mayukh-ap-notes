@@ -126,6 +126,12 @@ header a:visited,
   font-size: 1.5rem;
 }
 
+/* Custom font for inline code keywords like Math and String */
+.topic-title code {
+  font-family: 'Consolas', 'Courier New', Courier, monospace;
+  font-size: 0.95em; /* Adjusts scale to match Times New Roman text height */
+}
+
 /* Standard Body Links (Blue Unclicked, Purple Visited) */
 .topic-number a:link,
 .topic-title a:link,
