@@ -9,6 +9,12 @@ if (!isHomeScreen) { //Prevents chatting on the homescreen
     // Adding the button
     document.body.appendChild(chatBtn);
 
+    // Handling markdown with markdown library
+    if (!window.marked) {
+    const markedScript = document.createElement('script');
+    markedScript.src = "https://cdn.jsdelivr.net/npm/marked/marked.min.js";
+    document.head.appendChild(markedScript);}
+
     //Creating the chat window
     const chatWindow = document.createElement('div');
     chatWindow.id = 'chat-window';
@@ -75,10 +81,13 @@ async function handleUserMessage() {
 
         // Fetch reply from Cloudflare Worker backend
         const aiReply = await getAIResponse(userMessage);
+        
+        // Parses plain text markdown symbols into HTML tags
+        const parsedReply = window.marked ? marked.parse(aiReply) : aiReply;
 
         //Remove loading text and show real AI reply
         document.getElementById(loadingId).remove();
-        chatBody.innerHTML += `<p class="ai-msg"><strong>AI:</strong> ${aiReply}</p>`;
+        chatBody.innerHTML += `<div class="ai-msg"><strong>AI:</strong> ${parsedReply}</div>`;
         chatBody.scrollTop = chatBody.scrollHeight;
     }
 
