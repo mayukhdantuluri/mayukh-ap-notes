@@ -1,0 +1,166 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Header Banner */
+.header-banner {
+  background-color: #543ea5;
+  color: #ffffff;
+  padding: 25px 40px;
+}
+
+.header-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.title-group {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.main-title {
+  font-size: 3.6rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1.8rem;
+  margin: 5px 0 0 0;
+  font-weight: normal;
+}
+
+/* Header Navigation Links */
+header a,
+header a:link,
+header a:visited,
+.nav-unit-link,
+.nav-unit-link:link,
+.nav-unit-link:visited {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  position: absolute;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.prev-unit-link {
+  left: 0;
+}
+
+/* Hover Shift Left for Previous Unit */
+.prev-unit-link:hover {
+  transform: translateX(-6px);
+  opacity: 0.9;
+}
+
+.next-unit-link {
+  right: 0;
+}
+
+/* Hover Shift Right for Next Unit */
+.next-unit-link:hover {
+  transform: translateX(6px);
+  opacity: 0.9;
+}
+
+.arrow {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+/* Layout Wrapper */
+.wrapper {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.back-link,
+.back-link:link {
+  display: inline-block;
+  margin-bottom: 35px;
+  color: #005b94;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.back-link:visited {
+  color: #551a8b;
+}
+
+/* Topic Rows */
+.topics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 60px;
+}
+
+.topic-row {
+  display: flex;
+  align-items: baseline;
+  gap: 35px;
+}
+
+.topic-number {
+  font-size: 1.6rem;
+  font-weight: bold;
+  min-width: 140px;
+}
+
+.topic-title {
+  font-size: 1.5rem;
+}
+
+.math-text {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.1em; /* Math text often looks slightly smaller, so bumping it up helps readability */
+}
+.math-text var {
+    font-style: italic;
+}
+
+/* Standard Body Links (Blue Unclicked, Purple Visited) */
+.topic-number a:link,
+.topic-title a:link,
+.summary-title a:link {
+  color: #0000ee;
+  text-decoration: underline;
+}
+
+.topic-number a:visited,
+.topic-title a:visited,
+.summary-title a:visited {
+  color: #551a8b;
+  text-decoration: underline;
+}
+
+a .mjx-chtml, a .katex {
+  text-decoration: underline;
+}
+
+/* Unit Summary Header */
+.summary-section {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.summary-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
