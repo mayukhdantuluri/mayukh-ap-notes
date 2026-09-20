@@ -2,8 +2,8 @@
 The website should have AP Notes I did in High School
 
 # Team Members
-**Owner:** Mayukh Dantuluri (@mayukhdantuluri)
+**Frontend Developer:** Mayukh Dantuluri (@mayukhdantuluri)
 
-**Backend/Chatbot Developer:** Rian Ganesh (@rianganesh64-sketch) 
+**Backend Developer:** Rian Ganesh (@rianganesh64-sketch) 
 
 Contact mayukh.dantuluri@outlook.com or mayukhdantuluri@gmail.com to join (ONLY BOTHER ASKING IF I KNOW YOU OR YOU KNOW ME IN-PERSON, AND YOU MUST HAVE A GITHUB ACCOUNT)
