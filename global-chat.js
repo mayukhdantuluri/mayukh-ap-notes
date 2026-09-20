@@ -37,4 +37,21 @@ if (!isHomeScreen) { //Prevents chatting on the homescreen
         chatWindow.classList.toggle('hidden');
     });
 
+    async function getAIResponse(userMessage) {
+  try {
+    const response = await fetch("https://ap-notes-backend.rianganesh64.workers.dev/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ message: userMessage })
+    });
+
+    const data = await response.json();
+    return data.reply; // Assuming worker returns JSON with a 'reply' property
+  } catch (error) {
+    console.error("Error connecting to AP notes backend:", error);
+    return "Sorry, I couldn't reach the study assistant right now.";
+  }
+}
 }
