@@ -149,6 +149,10 @@ header a:visited,
   text-decoration: underline;
 }
 
+a .mjx-chtml, a .katex {
+  text-decoration: underline;
+}
+
 /* Unit Summary Header */
 .summary-section {
   text-align: center;
