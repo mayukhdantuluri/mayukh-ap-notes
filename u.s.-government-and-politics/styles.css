@@ -113,6 +113,7 @@ html, body {
   overflow: hidden;
   font-family: inherit;
   transition: opacity 0.25s ease, transform 0.25s ease;
+  overflow: auto; /* Scrollable*/
 }
 
 /*Toggling between hidden and not-hidden state*/
