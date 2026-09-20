@@ -2,7 +2,7 @@
 The website should have AP Notes I did in High School
 
 # Team Members
-**Owner:** Mayukh Dantuluri (@mayukhdantuluri)
+**Main Layout Creator:** Mayukh Dantuluri (@mayukhdantuluri)
 
 **Chatbot Developer:** Rian Ganesh (@rianganesh64-sketch) 
 
