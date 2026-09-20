@@ -126,6 +126,14 @@ header a:visited,
   font-size: 1.5rem;
 }
 
+.math-text {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.1em; /* Math text often looks slightly smaller, so bumping it up helps readability */
+}
+.math-text var {
+    font-style: italic;
+}
+
 /* Standard Body Links (Blue Unclicked, Purple Visited) */
 .topic-number a:link,
 .topic-title a:link,
