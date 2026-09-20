@@ -18,7 +18,7 @@ if (!isHomeScreen) { //Prevents chatting on the homescreen
             <h3>Your AI Assistant</h3>
             <button id="chat-close-btn">&times;</button>
         </div>
-        <div class="chat-body">
+        <div id="chat-body" class="chat-body">
             <p class="chat-greeting">How can I help?</p>
         </div>
         <div class="chat-footer">
@@ -54,4 +54,41 @@ if (!isHomeScreen) { //Prevents chatting on the homescreen
     return "Sorry, I couldn't reach the study assistant right now.";
   }
 }
+
+    const chatInput = document.getElementById('chat-input');
+    const chatBody = document.getElementById('chat-body');
+    const sendBtn = document.getElementById('chat-send-btn')
+
+async function handleUserMessage() {
+        const userMessage = chatInput.value.trim();
+        if (!userMessage) return;
+
+        // Append to chat UI
+        chatBody.innerHTML += `<p class="user-msg"><strong>You:</strong> ${userMessage}</p>`;
+        chatInput.value = '';
+        chatBody.scrollTop = chatBody.scrollHeight; // Auto-scroll down
+
+        // Showing loading text
+        const loadingId = 'loading-' + Date.now();
+        chatBody.innerHTML += `<p id="${loadingId}" class="ai-msg"><em>Thinking...</em></p>`;
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+        // Fetch reply from Cloudflare Worker backend
+        const aiReply = await getAIResponse(userMessage);
+
+        //Remove loading text and show real AI reply
+        document.getElementById(loadingId).remove();
+        chatBody.innerHTML += `<p class="ai-msg"><strong>AI:</strong> ${aiReply}</p>`;
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    sendBtn.addEventListener('click', handleUserMessage);
+
+    // Trigger on pressing "Enter" key inside the input field
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            handleUserMessage();
+        }
+    });
+
 }
