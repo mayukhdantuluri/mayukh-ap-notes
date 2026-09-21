@@ -47,12 +47,37 @@ if (!isHomeScreen) { //Prevents chatting on the homescreen
 
     async function getAIResponse(chatHistory) {
   try {
+
+    //Detects which subject the user is in
+    const path = window.location.pathname;
+    let currentSubject = "AP Courses"; // default fallback
+
+    // Setting currentSubject parameter based on path name
+    if (path.includes('u.s.-history')) {
+        currentSubject = "AP United States History (APUSH)"
+    }
+
+    else if (path.includes('u.s.-government-and-politics')) {
+        currentSubject = "AP United States Government and Politics (AP GOV)"
+    }
+
+    else if (path.includes('computer-science-a')) {
+        currentSubject = "AP Computer Science A (AP CSA)"
+    }
+
+    else if (path.includes('calculus-bc')) {
+        currentSubject = "AP Calculus BC (AP CALC BC)"
+    }
+
+    // Sending to the backend
     const response = await fetch("https://ap-notes-backend.rianganesh64.workers.dev/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ history: chatHistory })
+      body: JSON.stringify({ 
+        history: chatHistory, 
+        subject: currentSubject})
     });
 
     const data = await response.json();
