@@ -113,13 +113,37 @@ async function handleUserMessage() {
         const aiReply = await getAIResponse(chatHistory);
         
         chatHistory.push({ role: "model", parts: [{ text: aiReply }]});
-        // Parses plain text markdown symbols into HTML tags
-        const parsedReply = window.marked ? marked.parse(aiReply) : aiReply;
 
-        //Remove loading text and show real AI reply
+        // Remove loading text
         document.getElementById(loadingId).remove();
-        chatBody.innerHTML += `<div class="ai-msg"><strong>AI:</strong> ${parsedReply}</div>`;
-        chatBody.scrollTop = chatBody.scrollHeight;
+
+        // Empty container to house AI message
+
+        const aiMsgDiv = document.createElement('div');
+        aiMsgDiv.className = 'ai-msg'
+        aiMsgDiv.innerHTML = '<strong>AI:</strong> <span class="ai-text"></span>';
+        chatBody.appendChild(aiMsgDiv);
+
+        const textSpan = aiMsgDiv.querySelector('.ai-text');
+
+        // "Typewritter" animation loop
+        let charIndex = 0;
+        const typingSpeed = 12; //Controls how long it takes in milliseconds to type, lower is faster
+        
+        function typeWriter() {
+            if (charIndex < aiReply.length) {
+                //Append it character by character
+                textSpan.textContent += aiReply.charAt(charIndex);
+                charIndex ++;
+                chatBody.scrollTop = chatBody.scrollHeight;
+                setTimeout(typeWriter, typingSpeed);
+            } else { //Once typing is finished, run marked.parse() for markdown formatting
+                textSpan.innerHTML = window.marked ? marked.parse(aiReply) : aiReply;
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
+        }
+        //Start animation
+        typeWriter();
     }
 
     sendBtn.addEventListener('click', handleUserMessage);
