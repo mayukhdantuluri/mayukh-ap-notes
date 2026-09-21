@@ -132,12 +132,17 @@ async function handleUserMessage() {
         
         function typeWriter() {
             if (charIndex < aiReply.length) {
-                //Append it character by character
-                textSpan.textContent += aiReply.charAt(charIndex);
-                charIndex ++;
+                 //Gets currentText   
+                const currentText = aiReply.substring(0, charIndex + 1);
+
+                //Parsing markdown live
+                textSpan.innerHTML = window.marked ? marked.parse(currentText) : currentText;
+
+                charIndex++;
                 chatBody.scrollTop = chatBody.scrollHeight;
                 setTimeout(typeWriter, typingSpeed);
-            } else { //Once typing is finished, run marked.parse() for markdown formatting
+            } else {
+                //One final clean rendering
                 textSpan.innerHTML = window.marked ? marked.parse(aiReply) : aiReply;
                 chatBody.scrollTop = chatBody.scrollHeight;
             }
