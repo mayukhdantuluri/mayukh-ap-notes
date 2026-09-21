@@ -124,7 +124,16 @@ async function handleUserMessage() {
 
         // Showing loading text
         const loadingId = 'loading-' + Date.now();
-        chatBody.innerHTML += `<p id="${loadingId}" class="ai-msg"><em>Thinking...</em></p>`;
+        chatBody.innerHTML += `
+        <div id="${loadingId}" class="ai-msg">
+            <strong>AI:</strong>
+            <span class="typing-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+        </div>
+    ` ;
         chatBody.scrollTop = chatBody.scrollHeight;
 
         // Fetch reply from Cloudflare Worker backend
