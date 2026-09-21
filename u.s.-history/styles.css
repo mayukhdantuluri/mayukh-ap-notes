@@ -212,7 +212,7 @@ html, body {
     width: 6px;
     height: 6px;
     margin: 0 2px;
-    background-color: #666;
+    background-color: #005b94;
     border-radius: 50%;
     animation: bounce 1.4s infinite ease-in-out both;
 }
