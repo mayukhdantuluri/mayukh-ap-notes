@@ -11,6 +11,24 @@ if (!isHomeScreen) { //Prevents chatting on the homescreen
     // Adding the button
     document.body.appendChild(chatBtn);
 
+    // Injecting KaTeX CSS (For rendering LaTeX), transforms HTML into actual math
+    const katexCSS = document.createElement('link');
+    katexCSS.rel = 'stylesheet';
+    katexCSS.href = 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css';
+    document.head.appendChild(katexCSS);
+
+    // Inject KaTeX JS (For HTML coversion)
+    if (!window.katex) {
+        const katexScript = document.createElement('script');
+        katexScript.src = 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js';
+        document.head.appendChild(katexScript);
+    }
+
+    // Inject KaTeX auto render extension (scans for $x$ or $$x$$)
+    const autoRenderScript = document.createElement('script');
+    autoRenderScript.src = 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js';
+    document.head.appendChild(autoRenderScript);
+
     // Handling markdown with markdown library
     if (!window.marked) {
     const markedScript = document.createElement('script');
@@ -144,6 +162,16 @@ async function handleUserMessage() {
             } else {
                 //One final clean rendering
                 textSpan.innerHTML = window.marked ? marked.parse(aiReply) : aiReply;
+
+                //Rendering the LaTeX
+                if (window.renderMathInElement) { //Prevents the code from crashing
+                    renderMathInElement(textSpan, {
+                        delimiters: [
+                           {left: '$$', right: '$$', display: true}, //Block equations
+                            {left: '$', right: '$', display: false} //Inline equations
+                        ]
+                    })
+                }
                 chatBody.scrollTop = chatBody.scrollHeight;
             }
         }
