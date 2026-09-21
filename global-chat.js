@@ -2,6 +2,8 @@ const isHomeScreen = window.location.pathname.includes('homepage-index.html') ||
 
 if (!isHomeScreen) { //Prevents chatting on the homescreen
     //Floating chat toggle button
+
+    let chatHistory = [];
     const chatBtn = document.createElement('button');
     chatBtn.id = 'chat-toggle-btn';
     chatBtn.className = 'chat-toggle-btn';
@@ -43,14 +45,14 @@ if (!isHomeScreen) { //Prevents chatting on the homescreen
         chatWindow.classList.toggle('hidden');
     });
 
-    async function getAIResponse(userMessage) {
+    async function getAIResponse(chatHistory) {
   try {
     const response = await fetch("https://ap-notes-backend.rianganesh64.workers.dev/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ message: userMessage })
+      body: JSON.stringify({ history: chatHistory })
     });
 
     const data = await response.json();
@@ -69,6 +71,9 @@ async function handleUserMessage() {
         const userMessage = chatInput.value.trim();
         if (!userMessage) return;
 
+        chatHistory.push({ role: "user", parts: [{ text: userMessage }]});
+
+
         // Append to chat UI
         chatBody.innerHTML += `<p class="user-msg"><strong>You:</strong> ${userMessage}</p>`;
         chatInput.value = '';
@@ -80,8 +85,9 @@ async function handleUserMessage() {
         chatBody.scrollTop = chatBody.scrollHeight;
 
         // Fetch reply from Cloudflare Worker backend
-        const aiReply = await getAIResponse(userMessage);
+        const aiReply = await getAIResponse(chatHistory);
         
+        chatHistory.push({ role: "model", parts: [{ text: aiReply }]});
         // Parses plain text markdown symbols into HTML tags
         const parsedReply = window.marked ? marked.parse(aiReply) : aiReply;
 
