@@ -76,15 +76,15 @@ if (!isHomeScreen) { //Prevents chatting on the homescreen
     }
 
     else if (path.includes('u.s.-government-and-politics')) {
-        currentSubject = "AP United States Government and Politics (AP GOV)"
+        currentSubject = "AP United States Government and Politics"
     }
 
     else if (path.includes('computer-science-a')) {
-        currentSubject = "AP Computer Science A (AP CSA)"
+        currentSubject = "AP Computer Science A"
     }
 
     else if (path.includes('calculus-bc')) {
-        currentSubject = "AP Calculus BC (AP CALC BC)"
+        currentSubject = "AP Calculus BC"
     }
 
     // Sending to the backend
