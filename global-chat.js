@@ -11,24 +11,24 @@ if (!isHomeScreen) { //Prevents chatting on the homescreen
     // Adding the button
     document.body.appendChild(chatBtn);
 
-    // Injecting KaTeX CSS (For rendering LaTeX), transforms HTML into actual math
-    const katexCSS = document.createElement('link');
-    katexCSS.rel = 'stylesheet';
-    katexCSS.href = 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css';
-    document.head.appendChild(katexCSS);
 
-    // Inject KaTeX JS (For HTML coversion)
-    if (!window.katex) {
-        const katexScript = document.createElement('script');
-        katexScript.src = 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js';
-        document.head.appendChild(katexScript);
-    }
+    function loadExternalResource(tag, attributes) {
+    return new Promise((resolve, reject) => {
+        const element = document.createElement(tag);
+        for (let key in attributes) {
+            element[key] = attributes[key];
+        }
+        element.onload = resolve;
+        element.onerror = reject;
+        document.head.appendChild(element);
+    });
+}
 
-    // Inject KaTeX auto render extension (scans for $x$ or $$x$$)
-    const autoRenderScript = document.createElement('script');
-    autoRenderScript.src = 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js';
-    document.head.appendChild(autoRenderScript);
-
+    // Automatically load KaTeX and Marked globally
+    loadExternalResource('link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css' });
+    loadExternalResource('script', { src: 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js', defer: true });
+    loadExternalResource('script', { src: 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js', defer: true });
+    loadExternalResource('script', { src: 'https://cdn.jsdelivr.net/npm/marked/marked.min.js' });
     // Handling markdown with markdown library
     if (!window.marked) {
     const markedScript = document.createElement('script');
