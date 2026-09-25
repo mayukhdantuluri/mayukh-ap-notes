@@ -63,70 +63,48 @@ if (!isHomeScreen) { //Prevents chatting on the homescreen
         chatWindow.classList.toggle('hidden');
     });
 
-        async function getAIResponse(chatHistory, maxRetries = 3) {
-      let delay = 1000; // Start with a 1-second delay for the first retry
+    async function getAIResponse(chatHistory) {
+  try {
 
-      // Detects which subject the user is in
-      const path = window.location.pathname;
-      let currentSubject = "AP Courses"; // default fallback
+    //Detects which subject the user is in
+    const path = window.location.pathname;
+    let currentSubject = "AP Courses"; // default fallback
 
-      // Setting currentSubject parameter based on path name
-      if (path.includes('u.s.-history')) {
-          currentSubject = "AP United States History (APUSH)"
-      }
-      else if (path.includes('u.s.-government-and-politics')) {
-          currentSubject = "AP United States Government and Politics"
-      }
-      else if (path.includes('computer-science-a')) {
-          currentSubject = "AP Computer Science A"
-      }
-      else if (path.includes('calculus-bc')) {
-          currentSubject = "AP Calculus BC"
-      }
-
-      // Retry Loop
-      for (let attempt = 0; attempt < maxRetries; attempt++) {
-        try {
-          // Sending to the backend
-          const response = await fetch("https://ap-notes-backend.rianganesh64.workers.dev/", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ 
-              history: chatHistory, 
-              subject: currentSubject
-            })
-          });
-
-          // If the Cloudflare Worker or Gemini throws a server error, trigger a retry
-          if (!response.ok) {
-            if (response.status >= 500 && attempt < maxRetries - 1) {
-              console.warn(`Backend server error (${response.status}). Retrying attempt ${attempt + 1}/${maxRetries} in ${delay}ms...`);
-              await new Promise(resolve => setTimeout(resolve, delay));
-              delay *= 2; // Double the wait time for the next attempt (Exponential Backoff)
-              continue;
-            }
-            throw new Error(`Server responded with status ${response.status}`);
-          }
-
-          const data = await response.json();
-          return data.reply; // Assuming worker returns JSON with a 'reply' property
-
-        } catch (error) {
-          console.error(`Attempt ${attempt + 1} failed:`, error);
-          
-          // If we have retries left, wait and try again
-          if (attempt < maxRetries - 1) {
-            await new Promise(resolve => setTimeout(resolve, delay));
-            delay *= 2;
-            continue;
-          }
-          
-          return "Sorry, the AI servers are heavily overloaded right now. Please try your message again in a moment.";
-        }
-      }
+    // Setting currentSubject parameter based on path name
+    if (path.includes('u.s.-history')) {
+        currentSubject = "AP United States History (APUSH)"
     }
+
+    else if (path.includes('u.s.-government-and-politics')) {
+        currentSubject = "AP United States Government and Politics"
+    }
+
+    else if (path.includes('computer-science-a')) {
+        currentSubject = "AP Computer Science A"
+    }
+
+    else if (path.includes('calculus-bc')) {
+        currentSubject = "AP Calculus BC"
+    }
+
+    // Sending to the backend
+    const response = await fetch("https://ap-notes-backend.rianganesh64.workers.dev/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ 
+        history: chatHistory, 
+        subject: currentSubject})
+    });
+
+    const data = await response.json();
+    return data.reply; // Assuming worker returns JSON with a 'reply' property
+  } catch (error) {
+    console.error("Error connecting to AP notes backend:", error);
+    return "Sorry, I couldn't reach the study assistant right now.";
+  }
+}
 
     const chatInput = document.getElementById('chat-input');
     const chatBody = document.getElementById('chat-body');
