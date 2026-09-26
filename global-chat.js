@@ -48,7 +48,7 @@ if (!isHomeScreen) { //Prevents chatting on the homescreen
             <p class="chat-greeting">How can I help?</p>
         </div>
         <div class="chat-footer">
-            <input type="text" id="chat-input" placeholder="Type your question..."/>
+            <input type="text" id="chat-input" placeholder="Type something"/>
             <button id="chat-send-btn">Send</button>
         </div>
     `;
