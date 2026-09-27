@@ -208,6 +208,27 @@ async function handleUserMessage() {
                 //Parsing markdown live
                 textSpan.innerHTML = window.marked ? marked.parse(currentText) : currentText;
 
+                //Checking if $$ and $ LaTeX is closed (number of $ or $$ is divisble by 2)
+                const doubleDollarMatches = currentText.match(/\$\$/g);
+                const isBlockClosed = !doubleDollarMatches || doubleDollarMatches.length % 2 == 0;
+
+                const textWithoutBlocks = currentText.replace(/\$\$/g, '');
+                const singleDollarMatches = currentText.match(/\$/g);
+                const isInlineClosed = !singleDollarMatches || singleDollarMatches.length % 2 == 0;
+
+                const isMathClosed = isBlockClosed && isInlineClosed;
+                
+                //Only render if all LaTeX equations are full closed 
+                if (isMathClosed && window.renderMathInElement) {
+                    renderMathInElement(textSpan, {
+                        delimiters: [
+                           {left: '$$', right: '$$', display: true}, //Block equations
+                            {left: '$', right: '$', display: false} //Inline equations
+                        ]
+                    });
+
+                }
+
                 charIndex++;
                 chatBody.scrollTop = chatBody.scrollHeight;
                 setTimeout(typeWriter, typingSpeed);
