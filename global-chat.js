@@ -24,16 +24,31 @@ if (!isHomeScreen) { //Prevents chatting on the homescreen
     });
 }
 
-    // Automatically load KaTeX and Marked globally
-    loadExternalResource('link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css' });
-    loadExternalResource('script', { src: 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js', defer: true });
-    loadExternalResource('script', { src: 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js', defer: true });
-    loadExternalResource('script', { src: 'https://cdn.jsdelivr.net/npm/marked/marked.min.js' });
-    // Handling markdown with markdown library
-    if (!window.marked) {
-    const markedScript = document.createElement('script');
-    markedScript.src = "https://cdn.jsdelivr.net/npm/marked/marked.min.js";
-    document.head.appendChild(markedScript);}
+async function loadChatDependencies() {
+    try {
+        await loadExternalResource('link', {
+            rel: 'stylesheet',
+            href: 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css' });
+
+        await loadExternalResource('script', { 
+            src: 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js' 
+        });
+        
+        await loadExternalResource('script', { 
+            src: 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js' 
+        });
+
+        await loadExternalResource('script', { 
+            src: 'https://cdn.jsdelivr.net/npm/marked/marked.min.js' 
+        });
+
+        console.log("All chat dependencies loaded successfully");
+    } catch (error) {
+        console.error("Failed to load dependency: ", error);
+    }
+}
+
+loadChatDependencies();
 
     //Creating the chat window
     const chatWindow = document.createElement('div');
