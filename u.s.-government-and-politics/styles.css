@@ -199,13 +199,6 @@ html, body {
   gap: 30px;
 }
 
-.chat-footer {
-  display: flex;
-  padding: 12px;
-  background-color: #551d75;
-  border-top: 1px solid #98a8c9;
-  gap: 30px;
-}
 
 .chat-footer input {
   flex-grow: 1;
