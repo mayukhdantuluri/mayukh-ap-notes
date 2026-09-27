@@ -53,14 +53,14 @@ loadChatDependencies();
     //Creating the chat window
     const chatWindow = document.createElement('div');
     chatWindow.id = 'chat-window';
-    chatWindow.className = 'chat-window hidden'; // Starts hidden
+    chatWindow.className = 'chat-window hidden';
     chatWindow.innerHTML = `
         <div class="chat-header">
             <h3>Your AI Assistant</h3>
             <button id="chat-close-btn">&times;</button>
         </div>
         <div id="chat-body" class="chat-body">
-            <p class="chat-greeting">How can I help?</p>
+            <div class="chat-message ai-message"><strong>AI:</strong> How can I help?</div>
         </div>
         <div class="chat-footer">
             <input type="text" id="chat-input" placeholder="Type something"/>
@@ -160,23 +160,31 @@ async function handleUserMessage() {
         chatHistory.push({ role: "user", parts: [{ text: userMessage }]});
 
 
-        // Append to chat UI
-        chatBody.innerHTML += `<p class="user-msg"><strong>You:</strong> ${userMessage}</p>`;
+        // Append to user message to chat ui
+
+        chatBody.innerHTML += `
+        <div class="chat-message user-message">
+            ${userMessage}
+        </div>
+        `;
         chatInput.value = '';
         chatBody.scrollTop = chatBody.scrollHeight; // Auto-scroll down
 
         // Showing loading text
+        const loadingDiv = document.createElement('div');
         const loadingId = 'loading-' + Date.now();
-        chatBody.innerHTML += `
-        <div id="${loadingId}" class="ai-msg">
-            <strong>AI:</strong>
+        loadingDiv.id = loadingId;
+        loadingDiv.className = 'chat-message ai-message'; // Uses the exact same bubble class!
+        loadingDiv.innerHTML = `
+            <strong>AI:</strong> 
             <span class="typing-dots">
                 <span></span>
                 <span></span>
                 <span></span>
             </span>
-        </div>
-    ` ;
+        `;
+        chatBody.appendChild(loadingDiv);
+        chatBody.scrollTop = chatBody.scrollHeight;
         chatBody.scrollTop = chatBody.scrollHeight;
 
         // Fetch reply from Cloudflare Worker backend
@@ -187,10 +195,10 @@ async function handleUserMessage() {
         // Remove loading text
         document.getElementById(loadingId).remove();
 
-        // Empty container to house AI message
+        // Final AI reponse bubble container
 
         const aiMsgDiv = document.createElement('div');
-        aiMsgDiv.className = 'ai-msg'
+        aiMsgDiv.className = 'chat-message ai-message';
         aiMsgDiv.innerHTML = '<strong>AI:</strong> <span class="ai-text"></span>';
         chatBody.appendChild(aiMsgDiv);
 
