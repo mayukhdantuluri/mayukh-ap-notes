@@ -7,7 +7,7 @@ if (!isHomeScreen) { //Prevents chatting on the homescreen
     const chatBtn = document.createElement('button');
     chatBtn.id = 'chat-toggle-btn';
     chatBtn.className = 'chat-toggle-btn';
-    chatBtn.innerHTML = '💬Chat!';
+    chatBtn.innerHTML = '💬 Chat!';
     // Adding the button
     document.body.appendChild(chatBtn);
 
@@ -44,7 +44,7 @@ async function loadChatDependencies() {
 
         console.log("All chat dependencies loaded successfully");
     } catch (error) {
-        console.error("Failed to load dependency: ", error);
+        console.error("Fled to load dependency: ", error);
     }
 }
 
@@ -176,7 +176,7 @@ async function handleUserMessage() {
         loadingDiv.id = loadingId;
         loadingDiv.className = 'chat-message ai-message'; // Uses the exact same bubble class!
         loadingDiv.innerHTML = `
-            <strong>AI:</strong> 
+            <strong>rianAI:</strong> 
             <span class="typing-dots">
                 <span></span>
                 <span></span>
@@ -206,7 +206,7 @@ async function handleUserMessage() {
 
         // "Typewritter" animation loop
         let charIndex = 0;
-        const typingSpeed = 12; //Controls how long it takes in milliseconds to type, lower is faster
+        const typingSpeed = 10; //Controls how long it takes in milliseconds to type, lower is faster
         
         function typeWriter() {
             if (charIndex < aiReply.length) {
