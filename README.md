@@ -6,4 +6,4 @@ The website should have AP Notes I did in High School
 
 **Backend Developer:** Rian Ganesh (@rianganesh64-sketch) 
 
-Contact mayukh.dantuluri@outlook.com or mayukhdantuluri@gmail.com to join (ONLY BOTHER ASKING IF I KNOW YOU OR YOU KNOW ME IN-PERSON, AND YOU MUST HAVE A GITHUB ACCOUNT)
+Contact me with any method you have (phone, email, discord, etc.) to join (ONLY BOTHER ASKING IF I KNOW YOU OR YOU KNOW ME IN-PERSON, AND YOU MUST HAVE A GITHUB ACCOUNT)
