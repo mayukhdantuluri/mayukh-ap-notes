@@ -56,7 +56,7 @@ loadChatDependencies();
     chatWindow.className = 'chat-window hidden';
     chatWindow.innerHTML = `
         <div class="chat-header">
-            <h3>Your AI Assistant</h3>
+            <h3>rianAI Assistant</h3>
             <button id="chat-close-btn">&times;</button>
         </div>
         <div id="chat-body" class="chat-body">
