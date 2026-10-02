@@ -18,7 +18,7 @@ html, body {
   font-size: 4.5rem;
   font-weight: bold;
   margin: 0;
-  text-shadow: 0 0 1px #ffffff, 0 0 2px #ffffff, 0 0 3px #ffffff;
+  text-shadow: 0 0 5px #ffffff, 0 0 8px #ffffff, 0 0 10px #ffffff;
 }
 
 /* 2. Blue Disclaimer Bar */
