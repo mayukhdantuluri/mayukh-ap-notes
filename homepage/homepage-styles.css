@@ -33,7 +33,7 @@ html, body {
   white-space: nowrap;
   width: 100%;
   position: relative;
-  height: 45px; /* Set comfortable height for vertical centering */
+  height: 40px; /* Set comfortable height for vertical centering */
   display: flex;
   align-items: center; /* Centers child text vertically */
 }
