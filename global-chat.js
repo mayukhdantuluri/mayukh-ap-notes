@@ -63,6 +63,8 @@ loadChatDependencies();
             <div class="chat-message ai-message"><strong>rianAI:</strong> How can I help?</div>
         </div>
         <div class="chat-footer">
+            <input type="file" id="chat-file-input" accepts="image/*" style="display: none;" />
+            <button id="chat-upload-btn" type="button"> + </button>
             <input type="text" id="chat-input" placeholder="Type something"/>
             <button id="chat-send-btn">Send</button>
         </div>
