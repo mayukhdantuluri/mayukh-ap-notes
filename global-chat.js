@@ -75,6 +75,13 @@ loadChatDependencies();
         chatWindow.classList.toggle('hidden');
     });
 
+    const fileInput = document.getElementById('chat-file-input');
+    const uploadBtn = document.getElementById('chat-upload-btn');
+
+    uploadBtn.addEventListener('click', () => {
+        fileInput.click(); //opens filepicker window on device
+    });
+
     const closeBtn = document.getElementById('chat-close-btn');
     closeBtn.addEventListener('click', () => {
         chatWindow.classList.toggle('hidden');
