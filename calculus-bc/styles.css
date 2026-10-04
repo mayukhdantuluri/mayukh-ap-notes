@@ -193,6 +193,62 @@ html, body {
 
 .chat-footer {
   display: flex;
+  align-items: center;
+  padding: 12px;
+  background-color: #546ea5;
+  border-top: 1px solid #98a8c9;
+  gap: 8px;
+}
+
+.chat-footer input[type="text"] {
+  flex-grow: 1;
+  padding: 8px 12px;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+#chat-send-btn {
+  background-color: #98a8c9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: normal;
+  padding: 8px 14px;
+}
+
+#chat-send-btn:hover {
+  background-color: #98a8c9; /*Color for testing, will be changed*/
+  transform: translateY(0px);
+  box-shadow: 0 0 25px 6px rgba(152, 168, 201, 1);
+  transform: scale(1.05);
+}
+
+#chat-upload-btn {
+  background-color: #98a8c9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 900;
+  cursor: pointer;
+  padding: 6px 10px;
+}
+
+#chat-upload-btn:hover {
+  background-color: #98a8c9; /*Color for testing, will be changed*/
+  transform: translateY(0px);
+  box-shadow: 0 0 25px 6px rgba(152, 168, 201, 1);
+  transform: scale(1.05);
+} 
+/* .chat-footer {
+  display: flex;
   padding: 12px;
   background-color: #546ea5;
   border-top: 1px solid #98a8c9;
@@ -222,11 +278,11 @@ html, body {
 }
 
 #chat-send-btn:hover {
-  background-color: #98a8c9; /*Color for testing, will be changed*/
+  background-color: #98a8c9; 
   transform: translateY(0px);
   box-shadow: 0 0 25px 6px rgba(0, 91, 148, 0.55);
   transform: scale(1.1);
-}
+} */
 
 /* Loading Animation Styles */
 .typing-dots {
