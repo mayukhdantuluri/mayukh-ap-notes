@@ -62,12 +62,15 @@ loadChatDependencies();
         <div id="chat-body" class="chat-body">
             <div class="chat-message ai-message"><strong>rianAI:</strong> How can I help?</div>
         </div>
-        <div class="chat-footer">
-            <input type="file" id="chat-file-input" accepts="image/*" style="display: none;" />
-            <button id="chat-upload-btn" type="button" title="Upload a file (1 per message)"> + </button>
-            <input type="text" id="chat-input" placeholder="Type something"/>
-            <button id="chat-send-btn">Send</button>
-        </div>
+        <footer class="chat-footer">
+            <div class="chat-input-row">
+                <button id="chat-upload-btn" title="Upload image">+</button>
+                <input type="file" id="chat-file-input" style="display: none;" accept="image/*">
+                <input type="text" id="chat-input" placeholder="Type something...">
+                <button id="chat-send-btn">Send</button>
+            </div>
+            <p class="chat-disclaimer">Always verify important info: AI can make mistakes</p>
+        </footer>
     `;
     document.body.appendChild(chatWindow);
 
