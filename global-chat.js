@@ -64,7 +64,7 @@ loadChatDependencies();
         </div>
         <div class="chat-footer">
             <input type="file" id="chat-file-input" accepts="image/*" style="display: none;" />
-            <button id="chat-upload-btn" type="button"> + </button>
+            <button id="chat-upload-btn" type="button" title="Upload a file (1 per message)"> + </button>
             <input type="text" id="chat-input" placeholder="Type something"/>
             <button id="chat-send-btn">Send</button>
         </div>
@@ -82,9 +82,27 @@ loadChatDependencies();
         fileInput.click(); //opens filepicker window on device
     });
 
-    const closeBtn = document.getElementById('chat-close-btn');
-    closeBtn.addEventListener('click', () => {
-        chatWindow.classList.toggle('hidden');
+    let imageData = null;
+    let imageType = null;
+
+    fileInput.addEventListener('change', async (Event) => {
+        const file = Event.target.files[0]; // Getting the file selected
+        if (!file) return;
+
+        imageType = file.type;
+
+        try {
+            imageData = await new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (e) => resolve(e.target.result.split(',')[1]);
+                reader.onerror = (error) => reject(error);
+                reader.readAsDataURL(file);
+            });
+
+            console.log("Image converted into Base64 successfully!", imageType);
+        } catch (error) {
+            console.error("Error reading file:", error);
+        }
     });
 
     async function getAIResponse(chatHistory) {
@@ -163,10 +181,37 @@ loadChatDependencies();
     const sendBtn = document.getElementById('chat-send-btn')
 
 async function handleUserMessage() {
+        const chatInput = document.getElementById('chat-input'); 
         const userMessage = chatInput.value.trim();
-        if (!userMessage) return;
 
-        chatHistory.push({ role: "user", parts: [{ text: userMessage }]});
+        if (!userMessage && !imageData) return;
+
+        const messageParts = [];
+
+        if (userMessage) {
+            messageParts.push({ text: userMessage });
+        }
+
+        if (imageData && imageType) {
+            messageParts.push({
+                inlineData: {
+                    mimeType: imageType,
+                    data: imageData
+                }
+            });
+        }
+
+
+        chatHistory.push({ 
+            role: "user", 
+            parts: messageParts 
+        });
+
+        //Clearing for next time
+        chatInput.value = '';
+        imageData = null;
+        imageType = null;
+        
 
 
         // Append to user message to chat ui
