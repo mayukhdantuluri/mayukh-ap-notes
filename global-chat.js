@@ -90,7 +90,6 @@ loadChatDependencies();
         if (!file) return;
 
         imageType = file.type;
-
         try {
             imageData = await new Promise((resolve, reject) => {
                 const reader = new FileReader();
@@ -183,16 +182,15 @@ loadChatDependencies();
 async function handleUserMessage() {
         const chatInput = document.getElementById('chat-input'); 
         const userMessage = chatInput.value.trim();
-
-        if (!userMessage && !imageData) return;
+        if (!userMessage && !imageData) return; //If message is completely empty
 
         const messageParts = [];
 
-        if (userMessage) {
+        if (userMessage) { //Only text input
             messageParts.push({ text: userMessage });
         }
 
-        if (imageData && imageType) {
+        if (imageData && imageType) { //Both text and image input
             messageParts.push({
                 inlineData: {
                     mimeType: imageType,
