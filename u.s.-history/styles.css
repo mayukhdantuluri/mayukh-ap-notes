@@ -99,28 +99,34 @@ html, body {
 
 /* Chat window styling*/
 .chat-window {
+  overflow: hidden;
+  resize: both;
   position: fixed;
-  bottom: 150px;
-  right: 60px;
+  z-index: 1001;
+  font-family: inherit;
+
   width: 320px;
   height: 500px;
-  background-color: #e6e3dd; /*Just a testing color, will be changed*/
+  
+  top: calc(100vh - 500px - 150px); 
+  left: calc(100vw - 320px - 60px);
+
+  background-color: #e6e3dd; 
   border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2s);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  z-index: 1001;
-  overflow: hidden;
-  font-family: inherit;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  overflow: auto; /* Scrollable*/
-}
+  
+  min-width: 250px;
+  min-height: 350px;
+  max-width: 600px;
+  max-h
 
 /*Toggling between hidden and not-hidden state*/
 .chat-window.hidden {
   opacity: 0;
   transform: translateY(20px);
-  pointer-events: none; /*Disablying clicks which hidden*/
+  pointer-events: none; /*Disabling clicks which hidden*/
 }
 
 /* Header Bar for chat*/
@@ -131,6 +137,10 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.chat-window:not(.hidden) {
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .chat-header h3 {
@@ -233,9 +243,8 @@ html, body {
 
 #chat-send-btn:hover {
   background-color: #1d4ed8; /*Color for testing, will be changed*/
-  transform: translateY(0px);
   box-shadow: 0 0 25px 6px rgba(0, 91, 148, 0.55);
-  transform: scale(1.05);
+  transform: translateY(0px) scale(1.05);
 }
 
 #chat-upload-btn {
