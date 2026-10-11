@@ -62,6 +62,10 @@ loadChatDependencies();
         <div id="chat-body" class="chat-body">
             <div class="chat-message ai-message"><strong>rianAI:</strong> How can I help?</div>
         </div>
+        <div id="image-preview-container" class="preview-hidden">
+                <img id = "image-preview-thumb" src="" alt="Upload Preview">
+                <button id="remove-image-btn" title="Remove image">x</button>
+            </div>
         <footer class="chat-footer">
             <div class="chat-input-row">
                 <button id="chat-upload-btn" title="Upload image">+</button>
@@ -69,43 +73,66 @@ loadChatDependencies();
                 <input type="text" id="chat-input" placeholder="Type something...">
                 <button id="chat-send-btn">Send</button>
             </div>
+            
             <p class="chat-disclaimer">Always verify important info: AI can make mistakes</p>
         </footer>
     `;
     document.body.appendChild(chatWindow);
 
-    chatBtn.addEventListener('click', () => {
-        chatWindow.classList.toggle('hidden');
-    });
+   chatBtn.addEventListener('click', () => {
+    chatWindow.classList.toggle('hidden');
+});
 
-    const fileInput = document.getElementById('chat-file-input');
-    const uploadBtn = document.getElementById('chat-upload-btn');
+const fileInput = document.getElementById('chat-file-input');
+const uploadBtn = document.getElementById('chat-upload-btn');
 
-    uploadBtn.addEventListener('click', () => {
-        fileInput.click(); //opens filepicker window on device
-    });
 
-    let imageData = null;
-    let imageType = null;
+const previewContainer = document.getElementById('image-preview-container');
+const previewThumb = document.getElementById('image-preview-thumb');
+const removeImageBtn = document.getElementById('remove-image-btn');
 
-    fileInput.addEventListener('change', async (Event) => {
-        const file = Event.target.files[0]; // Getting the file selected
-        if (!file) return;
+uploadBtn.addEventListener('click', () => {
+    fileInput.click(); // Opens filepicker window on device
+});
 
-        imageType = file.type;
-        try {
-            imageData = await new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = (e) => resolve(e.target.result.split(',')[1]);
-                reader.onerror = (error) => reject(error);
-                reader.readAsDataURL(file);
-            });
+let imageData = null;
+let imageType = null;
 
-            console.log("Image converted into Base64 successfully!", imageType);
-        } catch (error) {
-            console.error("Error reading file:", error);
-        }
-    });
+fileInput.addEventListener('change', async (Event) => {
+    const file = Event.target.files[0]; // Getting the file selected
+    if (!file) return;
+
+    imageType = file.type;
+    try {
+       //reading full data URL
+        const fullDataUrl = await new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = (e) => resolve(e.target.result); // preserving full URL
+            reader.onerror = (error) => reject(error);
+            reader.readAsDataURL(file);
+        });
+
+
+        imageData = fullDataUrl.split(',')[1];
+
+
+        previewThumb.src = fullDataUrl;
+        previewContainer.classList.remove('preview-hidden'); //displaying thumbnail preview
+
+        console.log("Image loaded and preview displayed successfully!", imageType);
+    } catch (error) {
+        console.error("Error reading file:", error);
+    }
+});
+
+//Listener for clearing images
+removeImageBtn.addEventListener('click', () => {
+    imageData = null;
+    imageType = null;
+    fileInput.value = ''; // Reset file input
+    previewThumb.src = '';
+    previewContainer.classList.add('preview-hidden');
+});
 
     async function getAIResponse(chatHistory) {
         const modelsToTry = ["gemini-3.1-flash-lite", "gemini-3.1-flash", "gemini-2.1-flash-lite"]; //List of models to try if one previous is overloaded
@@ -152,7 +179,7 @@ loadChatDependencies();
                 //Exponential backoff
 
                 if (response.status == 503 && attempt < maxRetries) {
-                    const delay = Math.power(2, attempt) * 1000; //Tries 1 sec delay, 2 sec delay, 4 sec delay, etc.
+                    const delay = Math.pow(2, attempt) * 1000; //Tries 1 sec delay, 2 sec delay, 4 sec delay, etc.
                     console.warn(`503 overload on ${model}. Retrying in ${delay}ms (Attempt ${attempt + 1})...`);
                     await new Promise(resolve => setTimeout(resolve, delay));
                     continue;
@@ -212,6 +239,9 @@ async function handleUserMessage() {
         chatInput.value = '';
         imageData = null;
         imageType = null;
+        fileInput.value = "";
+        previewThumb.src = "";
+        previewContainer.classList.add('preview-hidden');
         
 
 
@@ -229,7 +259,7 @@ async function handleUserMessage() {
         const loadingDiv = document.createElement('div');
         const loadingId = 'loading-' + Date.now();
         loadingDiv.id = loadingId;
-        loadingDiv.className = 'chat-message ai-message'; // Uses the exact same bubble class!
+        loadingDiv.className = 'chat-message ai-message';
         loadingDiv.innerHTML = `
             <strong>rianAI:</strong> 
             <span class="typing-dots">
@@ -259,7 +289,7 @@ async function handleUserMessage() {
 
         const textSpan = aiMsgDiv.querySelector('.ai-text');
 
-        // "Typewritter" animation loop
+        // "Typewriter" animation loop
         let charIndex = 0;
         const typingSpeed = 10; //Controls how long it takes in milliseconds to type, lower is faster
         
