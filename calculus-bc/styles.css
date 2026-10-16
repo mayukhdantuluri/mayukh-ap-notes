@@ -100,20 +100,19 @@ html, body {
 /* Chat window styling*/
 .chat-window {
   position: fixed;
-  bottom: 150px;
-  right: 60px;
-  width: 320px;
-  height: 500px;
-  background-color: #f4f6f8; /*Just a testing color, will be changed*/
+  bottom: 20px;
+  right: 20px;
+  width: min(90vw, 360px); /*Dynamically scales by screen*/
+  height: min(85vh, 520px);
+  background-color: #f4f6f8;
   border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2s);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   z-index: 1001;
   overflow: hidden;
   font-family: inherit;
   transition: opacity 0.25s ease, transform 0.25s ease;
-  overflow: auto; /* Scrollable*/
 }
 
 /*Toggling between hidden and not-hidden state*/
