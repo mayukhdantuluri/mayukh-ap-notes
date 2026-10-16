@@ -83,6 +83,11 @@ loadChatDependencies();
     chatWindow.classList.toggle('hidden');
 });
 
+    const chatCloseBtn = document.getElementById('chat-close-btn');
+    chatCloseBtn.addEventListener('click', () => {
+        chatWindow.classList.add('hidden');
+    })
+
 const fileInput = document.getElementById('chat-file-input');
 const uploadBtn = document.getElementById('chat-upload-btn');
 
