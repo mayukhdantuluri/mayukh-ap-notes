@@ -68,10 +68,10 @@ loadChatDependencies();
             </div>
         <footer class="chat-footer">
             <div class="chat-input-row">
-                <button id="chat-upload-btn" title="Upload image">+</button>
+                <button id="chat-upload-btn" title="Upload image">🞢</button>
                 <input type="file" id="chat-file-input" style="display: none;" accept="image/*">
                 <input type="text" id="chat-input" placeholder="Type something...">
-                <button id="chat-send-btn">Send</button>
+                <button id="chat-send-btn">⭡</button>
             </div>
             
             <p class="chat-disclaimer">Always verify important info: AI can make mistakes</p>
