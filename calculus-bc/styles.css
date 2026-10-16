@@ -72,8 +72,8 @@ html, body {
 /* Chat button styling */
 .chat-toggle-btn {
   position: fixed;
-  bottom: 75px;
-  right: 75px;
+  bottom: 60px;
+  right: 60px;
   background-color: #546ea5;
   color: white;
   border: none;
@@ -102,8 +102,8 @@ html, body {
   position: fixed;
   bottom: 150px;
   right: 75px;
-  width: min(90vw, 360px); /*Dynamically scales by screen*/
-  height: min(85vh, 520px);
+  width: min(87.5vw, 360px); /*Dynamically scales by screen*/
+  height: min(75vh, 520px);
   background-color: #f4f6f8;
   border-radius: 16px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
