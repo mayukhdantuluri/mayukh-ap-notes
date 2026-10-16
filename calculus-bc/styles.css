@@ -100,8 +100,8 @@ html, body {
 /* Chat window styling*/
 .chat-window {
   position: fixed;
-  bottom: 150px;
-  right: 75px;
+  bottom: 145px;
+  right: 60px;
   width: min(87.5vw, 360px); /*Dynamically scales by screen*/
   height: min(75vh, 520px);
   background-color: #f4f6f8;
