@@ -74,7 +74,8 @@ loadChatDependencies();
                 <button id="chat-send-btn">⭡</button>
             </div>
             
-            <p class="chat-disclaimer">Always verify important info: RianGPT can make mistakes</p>
+            <p class="chat-disclaimer">Always verify important info: RianGPT can make mistakes.</p>
+            <p class="chat-disclaimer">The GPT in RianGPT stands for Ganesh Premium Thought.</p>
         </footer>
     `;
     document.body.appendChild(chatWindow);
