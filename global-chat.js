@@ -56,11 +56,11 @@ loadChatDependencies();
     chatWindow.className = 'chat-window hidden';
     chatWindow.innerHTML = `
         <div class="chat-header">
-            <h3><strong>rianGPT</strong></h3>
+            <h3><strong>RianGPT</strong></h3>
             <button id="chat-close-btn">&times;</button>
         </div>
         <div id="chat-body" class="chat-body">
-            <div class="chat-message ai-message"><strong>rianGPT:</strong> How can I help?</div>
+            <div class="chat-message ai-message"><strong>RianGPT:</strong> How can I help?</div>
         </div>
         <div id="image-preview-container" class="preview-hidden">
                 <img id = "image-preview-thumb" src="" alt="Upload Preview">
@@ -74,7 +74,7 @@ loadChatDependencies();
                 <button id="chat-send-btn">⭡</button>
             </div>
             
-            <p class="chat-disclaimer">Always verify important info: rianGPT can make mistakes</p>
+            <p class="chat-disclaimer">Always verify important info: RianGPT can make mistakes</p>
         </footer>
     `;
     document.body.appendChild(chatWindow);
@@ -266,7 +266,7 @@ async function handleUserMessage() {
         loadingDiv.id = loadingId;
         loadingDiv.className = 'chat-message ai-message';
         loadingDiv.innerHTML = `
-            <strong>rianGPT:</strong> 
+            <strong>RianGPT:</strong> 
             <span class="typing-dots">
                 <span></span>
                 <span></span>
@@ -289,7 +289,7 @@ async function handleUserMessage() {
 
         const aiMsgDiv = document.createElement('div');
         aiMsgDiv.className = 'chat-message ai-message';
-        aiMsgDiv.innerHTML = '<strong>AI:</strong> <span class="ai-text"></span>';
+        aiMsgDiv.innerHTML = '<strong>RianGPT:</strong> <span class="ai-text"></span>';
         chatBody.appendChild(aiMsgDiv);
 
         const textSpan = aiMsgDiv.querySelector('.ai-text');
