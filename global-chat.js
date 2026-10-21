@@ -7,7 +7,7 @@ if (!isHomeScreen) { //Prevents chatting on the homescreen
     const chatBtn = document.createElement('button');
     chatBtn.id = 'chat-toggle-btn';
     chatBtn.className = 'chat-toggle-btn';
-    chatBtn.innerHTML = '💬 Chat!';
+    chatBtn.innerHTML = '💬 Chat';
     // Adding the button
     document.body.appendChild(chatBtn);
 
