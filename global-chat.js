@@ -74,8 +74,8 @@ loadChatDependencies();
                 <button id="chat-send-btn">⭡</button>
             </div>
             
-            <p class="chat-disclaimer">Always verify important info: RianGPT can make mistakes.</p>
-            <p class="chat-disclaimer">The GPT in RianGPT stands for Ganesh Premium Thought.</p>
+            <p class="chat-disclaimer">RianGPT can make mistakes & won't always work properly.</p>
+            <p class="chat-disclaimer">The 'GPT' in RianGPT stands for Ganesh Premium Thought.</p>
         </footer>
     `;
     document.body.appendChild(chatWindow);
@@ -297,7 +297,7 @@ async function handleUserMessage() {
 
         // "Typewriter" animation loop
         let charIndex = 0;
-        const typingSpeed = 10; //Controls how long it takes in milliseconds to type, lower is faster
+        const typingSpeed = 5; //Controls how long it takes in milliseconds to type, lower is faster
         
         function typeWriter() {
             if (charIndex < aiReply.length) {
