@@ -75,7 +75,7 @@ loadChatDependencies();
             </div>
             
             <p class="chat-disclaimer">RianGPT can make mistakes & won't always work properly.</p>
-            <p class="chat-disclaimer">The 'GPT' in RianGPT stands for Ganesh Premium Thought.</p>
+            <!-- <p class="chat-disclaimer">The 'GPT' in RianGPT stands for Ganesh Premium Thought.</p> -->
         </footer>
     `;
     document.body.appendChild(chatWindow);
