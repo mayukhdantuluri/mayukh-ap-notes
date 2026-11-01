@@ -299,60 +299,44 @@ async function handleUserMessage() {
 
         const textSpan = aiMsgDiv.querySelector('.ai-text');
 
-        // "Typewriter" animation loop
-        let charIndex = 0;
-        const typingSpeed = 5; //Controls how long it takes in milliseconds to type, lower is faster
+        // Hidden Stage Node: Processes Markdown and LaTex once off screen
+        const hiddenStage = document.createElement('div');
+        hiddenStage.innerHTML = window.marked ? window.marked.parse(aiReply) : aiReply;
         
-        function typeWriter() {
-            if (charIndex < aiReply.length) {
-                 //Gets currentText   
-                const currentText = aiReply.substring(0, charIndex + 1);
+        if (window.renderMathInElement) {
+            window.renderMathInElement(hiddenStage, {
+                delimiters: [
+                   {left: '$$', right: '$$', display: true}, 
+                   {left: '$', right: '$', display: false} 
+                ],
+                throwOnError: false
+            });
+        }
 
-                //Parsing markdown live
-                textSpan.innerHTML = window.marked ? marked.parse(currentText) : currentText;
+        // Extract the fully rendered math and text components to stream them smoothly
+        const nodesToStream = Array.from(hiddenStage.childNodes);
+        let nodeIndex = 0;
+        const streamingInterval = 5000; // Spacing in milliseconds between blocks appearing
 
-                //Checking if $$ and $ LaTeX is closed (number of $ or $$ is divisble by 2)
-                const doubleDollarMatches = currentText.match(/\$\$/g);
-                const isBlockClosed = !doubleDollarMatches || doubleDollarMatches.length % 2 == 0;
-
-                const textWithoutBlocks = currentText.replace(/\$\$/g, '');
-                const singleDollarMatches = currentText.match(/\$/g);
-                const isInlineClosed = !singleDollarMatches || singleDollarMatches.length % 2 == 0;
-
-                const isMathClosed = isBlockClosed && isInlineClosed;
+        function streamText() {
+            if (nodeIndex < nodesToStream.length) {
+                // Clone the pre-rendered element node or math fragment
+                const nodeClone = nodesToStream[nodeIndex].cloneNode(true);
                 
-                //Only render if all LaTeX equations are full closed 
-                if (isMathClosed && window.renderMathInElement) {
-                    renderMathInElement(textSpan, {
-                        delimiters: [
-                           {left: '$$', right: '$$', display: true}, //Block equations
-                            {left: '$', right: '$', display: false} //Inline equations
-                        ]
-                    });
-
-                }
-
-                charIndex++;
+                // Append directly to the visible chat window UI
+                textSpan.appendChild(nodeClone);
+                
+                nodeIndex++;
                 chatBody.scrollTop = chatBody.scrollHeight;
-                setTimeout(typeWriter, typingSpeed);
+                setTimeout(streamText, streamingInterval);
             } else {
-                //One final clean rendering
-                textSpan.innerHTML = window.marked ? marked.parse(aiReply) : aiReply;
-
-                //Rendering the LaTeX
-                if (window.renderMathInElement) { //Prevents the code from crashing
-                    renderMathInElement(textSpan, {
-                        delimiters: [
-                           {left: '$$', right: '$$', display: true}, //Block equations
-                            {left: '$', right: '$', display: false} //Inline equations
-                        ]
-                    })
-                }
                 chatBody.scrollTop = chatBody.scrollHeight;
             }
         }
-        //Start animation
-        typeWriter();
+        
+        // Start animation
+        streamText();
+
     }
 
     sendBtn.addEventListener('click', handleUserMessage);
