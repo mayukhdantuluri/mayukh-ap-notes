@@ -292,6 +292,7 @@ async function handleUserMessage() {
 
         // Final AI reponse bubble container
 
+       
         const aiMsgDiv = document.createElement('div');
         aiMsgDiv.className = 'chat-message ai-message';
         aiMsgDiv.innerHTML = '<strong>RianGPT:</strong> <span class="ai-text"></span>';
@@ -299,7 +300,7 @@ async function handleUserMessage() {
 
         const textSpan = aiMsgDiv.querySelector('.ai-text');
 
-        // Hidden Stage Node: Processes Markdown and LaTex once off screen
+        //Create hidden staging canvas to parse everything safely once
         const hiddenStage = document.createElement('div');
         hiddenStage.innerHTML = window.marked ? window.marked.parse(aiReply) : aiReply;
         
@@ -313,29 +314,74 @@ async function handleUserMessage() {
             });
         }
 
-        // Extract the fully rendered math and text components to stream them smoothly
-        const nodesToStream = Array.from(hiddenStage.childNodes);
-        let nodeIndex = 0;
-        const streamingInterval = 5000; // Spacing in milliseconds between blocks appearing
+        // Create a token list of letters versus math
+        const queue = [];
+        
+        function processNode(node) {
+            // If it's a KaTeX math element, do NOT break it apart. Treat it as a single chunk.
+            if (node.nodeType === Node.ELEMENT_NODE && (node.classList.contains('katex') || node.classList.contains('katex-display'))) {
+                queue.push({ type: 'node', value: node.cloneNode(true) });
+                return;
+            }
+            
+            // If it's a structural element (<p>, <strong>, <em>, <ul>), clone its shell and traverse inside
+            if (node.nodeType === Node.ELEMENT_NODE) {
+                const shell = node.cloneNode(false);
+                queue.push({ type: 'openShell', value: shell });
+                
+                Array.from(node.childNodes).forEach(child => processNode(child));
+                
+                queue.push({ type: 'closeShell' });
+                return;
+            }
+            
+            // If it's raw text, break it apart into character tokens for typewriter
+            if (node.nodeType === Node.TEXT_NODE) {
+                const textStr = node.textContent;
+                for (let i = 0; i < textStr.length; i++) {
+                    queue.push({ type: 'char', value: textStr[i] });
+                }
+            }
+        }
 
-        function streamText() {
-            if (nodeIndex < nodesToStream.length) {
-                // Clone the pre-rendered element node or math fragment
-                const nodeClone = nodesToStream[nodeIndex].cloneNode(true);
-                
-                // Append directly to the visible chat window UI
-                textSpan.appendChild(nodeClone);
-                
-                nodeIndex++;
+        // Populate custom typewriter execution schedule
+        Array.from(hiddenStage.childNodes).forEach(node => processNode(node));
+
+        //Run the targeted execution typewriter loop
+        let queueIndex = 0;
+        let currentTargetContainer = textSpan;
+        const typingSpeed = 7.5; // Speed of typewriter, adjust as needed
+
+        function advanceTypewriter() {
+            if (queueIndex < queue.length) {
+                const token = queue[queueIndex];
+
+                if (token.type === 'char') {
+                    // Type individual text letters character-by-character
+                    currentTargetContainer.appendChild(document.createTextNode(token.value));
+                } else if (token.type === 'node') {
+                    // Drop whole math structures onto the DOM layout as a single token instantly
+                    currentTargetContainer.appendChild(token.value);
+                } else if (token.type === 'openShell') {
+                    // Build up inner semantic nesting wrappers (<p>, <strong>, etc.)
+                    currentTargetContainer.appendChild(token.value);
+                    currentTargetContainer = token.value; // Move nesting focus context inside shell
+                } else if (token.type === 'closeShell') {
+                    // Escape nesting wrap layers back up to parent depth
+                    currentTargetContainer = currentTargetContainer.parentNode || textSpan;
+                }
+
+                queueIndex++;
                 chatBody.scrollTop = chatBody.scrollHeight;
-                setTimeout(streamText, streamingInterval);
+                setTimeout(advanceTypewriter, typingSpeed);
             } else {
                 chatBody.scrollTop = chatBody.scrollHeight;
             }
         }
-        
-        // Start animation
-        streamText();
+
+        // final typewriter sequence
+        advanceTypewriter();
+
 
     }
 
