@@ -24,8 +24,10 @@ if (!isHomeScreen) { //Prevents chatting on the homescreen
     });
 }
 
+let loadChatDependenciesReady = false;
 async function loadChatDependencies() {
     try {
+        //Loading CSS first
         await loadExternalResource('link', {
             rel: 'stylesheet',
             href: 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css' });
@@ -33,15 +35,17 @@ async function loadChatDependencies() {
         await loadExternalResource('script', { 
             src: 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js' 
         });
+
+         await loadExternalResource('script', { 
+            src: 'https://cdn.jsdelivr.net/npm/marked/marked.min.js' 
+        });
         
         await loadExternalResource('script', { 
             src: 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js' 
         });
 
-        await loadExternalResource('script', { 
-            src: 'https://cdn.jsdelivr.net/npm/marked/marked.min.js' 
-        });
-
+       
+        loadChatDependencies = true;
         console.log("All chat dependencies loaded successfully");
     } catch (error) {
         console.error("Fled to load dependency: ", error);
