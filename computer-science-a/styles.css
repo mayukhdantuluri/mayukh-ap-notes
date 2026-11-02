@@ -102,7 +102,7 @@ html, body {
   position: fixed;
   bottom: 145px;
   right: 60px;
-  width: min(87.5vw, 320px);
+  width: min(87.5vw, 360px);
   height: min(75vh, 500px);
   background-color: #f4f6f8; /*Just a testing color, will be changed*/
   border-radius: 16px;

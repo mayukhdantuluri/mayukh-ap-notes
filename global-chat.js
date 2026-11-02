@@ -148,31 +148,36 @@ removeImageBtn.addEventListener('click', () => {
         const modelsToTry = ["gemini-3.1-flash-lite", "gemini-3.1-flash", "gemini-2.1-flash-lite"]; //List of models to try if one previous is overloaded
         const maxRetries  = 2; //2 retries per model before moving on
 
+        //Detects which subject the user is in
+        const path = window.location.pathname;
+        let currentSubject = "AP Courses"; // default fallback
+        
+        // Setting currentSubject parameter based on path name
+            if (path.includes('u.s.-history')) {
+                currentSubject = "AP United States History (APUSH)"
+            }
+
+            else if (path.includes('u.s.-government-and-politics')) {
+                currentSubject = "AP United States Government and Politics"
+            }
+
+            else if (path.includes('computer-science-a')) {
+                currentSubject = "AP Computer Science A"
+            }
+
+            else if (path.includes('calculus-bc')) {
+                currentSubject = "AP Calculus BC"
+            }
+
+        //Iterating through models loop
+        
         for (const model of modelsToTry) {
-            for (let attempt = 0; attempt <= maxRetries; attempt++) {
+            console.log(`Attempting with model: ${model}`);
+
+            //Handling number of retries
+            for (let attempt = 0; attempt < maxRetries; attempt++) {
 
                 try {
-                    //Detects which subject the user is in
-                    const path = window.location.pathname;
-                    let currentSubject = "AP Courses"; // default fallback
-
-                    // Setting currentSubject parameter based on path name
-                    if (path.includes('u.s.-history')) {
-                        currentSubject = "AP United States History (APUSH)"
-                    }
-
-                    else if (path.includes('u.s.-government-and-politics')) {
-                        currentSubject = "AP United States Government and Politics"
-                    }
-
-                    else if (path.includes('computer-science-a')) {
-                        currentSubject = "AP Computer Science A"
-                    }
-
-                    else if (path.includes('calculus-bc')) {
-                        currentSubject = "AP Calculus BC"
-                    }
-
                     // Sending to the backend
                     const response = await fetch("https://ap-notes-backend.rianganesh64.workers.dev/", {
                     method: "POST",
@@ -186,34 +191,41 @@ removeImageBtn.addEventListener('click', () => {
                     })
                 });
 
-                //Exponential backoff
+                //Handling 503 errors with exponetial backoff and random jitter
 
-                if (response.status == 503 && attempt < maxRetries) {
-                    const delay = Math.pow(2, attempt) * 1000; //Tries 1 sec delay, 2 sec delay, 4 sec delay, etc.
-                    console.warn(`503 overload on ${model}. Retrying in ${delay}ms (Attempt ${attempt + 1})...`);
-                    await new Promise(resolve => setTimeout(resolve, delay));
-                    continue;
+                if (response.status == 503) {
+                    if (attempt < maxRetries - 1) {
+                        const jittery = Math.random() * 1000;
+                        const delay = Math.pow(2, attempt) * 1000 + jittery;
+
+                        console.warn(`503 overload error on ${model}. Retrying  in ${Math.round(delay)}ms (Attmept ${attempt+ 1} out of ${maxRetries})`)
+                    } else {
+                         throw new Error(`Model ${model} exhausted after ${maxRetries} attempts with 503 Service Unavailable.`);
+                    }
                 }
 
+                // Handling all other failures
                 if (!response.ok) {
                     throw new Error(`HTTP error. status: ${response.status}`);
                 }
 
                 const data = await response.json();
-                return data.reply;
-                
+                return data.reply; // Succesful: breaks and returns data
+
             } catch (error) {
-                console.warn(`Failure with model ${model} on attempt ${attempt + 1}:`, error);
-
-                if (attempt == maxRetries) {
-                    console.log(`Switching to new model: ${model}`);
-                    break;
+                console.warn(`Failure with model ${model} on attempt ${attempt + 1}:`, error.message);
+                
+                // If we've reached max retry, exit innner loop and execute model degradation
+                if (attempt === maxRetries - 1) {
+                    console.log(`Max retries reached for ${model}. Switching to next model`);
+                    break; 
                 }
-            }
-
-            }
+            }                
         }
     }
+    //Ultimate fallback
+    throw new Error("All fallback Gemini models failed. Try againn later")
+}
 
     const chatInput = document.getElementById('chat-input');
     const chatBody = document.getElementById('chat-body');
@@ -388,10 +400,9 @@ async function handleUserMessage() {
     sendBtn.addEventListener('click', handleUserMessage);
 
     // Trigger on pressing "Enter" key inside the input field
-    chatInput.addEventListener('keypress', (e) => {
+    chatInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
             handleUserMessage();
         }
     });
-
 }
