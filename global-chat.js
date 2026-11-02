@@ -145,7 +145,7 @@ removeImageBtn.addEventListener('click', () => {
 });
 
     async function getAIResponse(chatHistory) {
-        const modelsToTry = ["gemini-3.1-flash-lite", "gemini-3.1-flash", "gemini-2.1-flash-lite"]; //List of models to try if one previous is overloaded
+        const modelsToTry = ["gemini-3.5-flash-lite", "gemini-3.6-flash", "gemini-3.8-flash"]; //List of models to try if one previous is overloaded
         const maxRetries  = 2; //2 retries per model before moving on
 
         //Detects which subject the user is in
